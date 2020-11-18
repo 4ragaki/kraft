@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fun.aragaki.kraft">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".Kraft"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Kraft">
+
+        <activity
+            android:name=".ui.posts.PostsActivity"
+            android:label="@string/label_posts"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="*"
+                    android:path="/posts"
+                    android:scheme="kraft" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+
+                <data android:pathPattern="/posts" />
+
+                <data android:pathPattern="/post" />
+
+                <data android:pathPattern="/index.php" />
+
+                <data android:pathPattern="/" />
+                <data android:pathPattern="/post/index" />
+
+                <data android:pathPattern="/tags/.*" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".ui.JumpActivity"
+            android:launchMode="singleTop" />
+
+
+        <activity
+            android:name=".ui.post.PhotoViewActivity"
+            android:theme="@style/Theme.Detail" />
+
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".ui.post.PostActivity"
+            android:label="@string/activity_post"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+
+                <data android:pathPattern="/posts/.*" />
+
+                <data android:pathPattern="/post/show/.*" />
+
+                <data android:pathPattern="/index.php" />
+
+                <data android:pathPattern="/artworks/.*" />
+                <data android:pathPattern="/member_illust.php" />
+                <data android:pathPattern="/i/.*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="*"
+                    android:path="/post"
+                    android:scheme="kraft" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".ui.search.ReverseActivity"
+            android:label="@string/label_reverse">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+
+        <receiver android:name=".receivers.DownloadReceiver" />
+    </application>
+
+</manifest>
