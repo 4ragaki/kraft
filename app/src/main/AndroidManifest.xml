@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fun.aragaki.kraft">
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+
+            <data android:mimeType="text/plain" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".Kraft"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Kraft">
+        <receiver
+            android:name=".ui.widget.PopularWidget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/popular_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".ui.widget.PopularWidgetConfigureActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.post.ImageViewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_image_view"
+            android:theme="@style/Theme.Kraft.NoActionBar" />
+        <activity
+            android:name=".ui.post.PostActivity"
+            android:exported="true"
+            android:label="@string/title_activity_post_compose"
+            android:icon="@drawable/ic_activity_post"
+            android:theme="@style/Theme.Kraft.NoActionBar">
+
+            <!-- Yande.re Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="yande.re" />
+                <data android:pathPattern="/post/show/.*" />
+            </intent-filter>
+            <!-- Danbooru Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="danbooru.donmai.us" />
+                <data android:pathPattern="/posts/.*" />
+            </intent-filter>
+            <!-- Gelbooru Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="gelbooru.com" />
+                <data android:pathPattern="/index.php" />
+            </intent-filter>
+            <!-- Sankaku Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="chan.sankakucomplex.com/" />
+                <data android:pathPattern="/post/show/.*" />
+                <data android:pathPattern="/*/post/show/.*" />
+            </intent-filter>
+            <!-- Konachan Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="konachan.com" />
+                <data android:pathPattern="/post/show/.*" />
+            </intent-filter>
+            <!-- Safebooru Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="safebooru.donmai.us" />
+                <data android:pathPattern="/posts/.*" />
+            </intent-filter>
+            <!-- Pixiv Post -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="pixiv.net" />
+                <data android:host="www.pixiv.net" />
+                <data android:pathPattern="/artworks/.*" />
+                <data android:pathPattern="/*/artworks/.*" />
+                <data android:pathPattern="/member_illust.php" />
+                <data android:pathPattern="/i/.*" />
+            </intent-filter>
+
+            <!-- 获取分享Post URL -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
+            </intent-filter>
+            <!-- 打开自定义Post URL -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="*"
+                    android:path="/post"
+                    android:scheme="kraft" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.posts.PostsActivity"
+            android:exported="true"
+            android:label="@string/label_posts"
+            android:icon="@drawable/ic_home_posts"
+            android:launchMode="singleTop">
+
+            <!-- 打开自定义Posts URL -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="*"
+                    android:path="/posts"
+                    android:scheme="kraft" />
+            </intent-filter>
+            <!-- 获取分享Posts URL -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
+            </intent-filter>
+            <!-- Yande.re Posts -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="yande.re" />
+                <data android:pathPattern="/post" />
+            </intent-filter>
+            <!-- Danbooru Posts -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="danbooru.donmai.us" />
+                <data android:pathPattern="/posts" />
+            </intent-filter>
+            <!-- Gelbooru Posts -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="gelbooru.com" />
+                <data android:pathPattern="/index.php" />
+            </intent-filter>
+            <!-- Sankaku Posts -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="chan.sankakucomplex.com" />
+                <data android:pathPattern="/" />
+                <data android:pathPattern="/*/" />
+            </intent-filter>
+            <!-- Konachan Posts -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="konachan.com" />
+                <data android:pathPattern="/post" />
+            </intent-filter>
+            <!-- Safebooru Posts -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="safebooru.donmai.us/" />
+                <data android:pathPattern="/posts" />
+            </intent-filter>
+            <!-- Pixiv Illustrations -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="www.pixiv.net" />
+                <data android:host="pixiv.net" />
+                <data android:pathPattern="/tags" />
+                <data android:pathPattern="/*/tags" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.JumpActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
+            </intent-filter>
+            <intent-filter>
+
+                <!-- 解析PixivToken -->
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="*" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="pixiv" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.search.ReverseComposeActivity"
+            android:exported="true"
+            android:icon="@drawable/ic_activity_search"
+            android:label="@string/label_reverse">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".receivers.DownloadReceiver" />
+    </application>
+
+</manifest>

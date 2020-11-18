@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_key_doc_tree_authority" translatable="false">doc_tree_authority</string>
+    <string name="pref_key_doc_tree_id" translatable="false">doc_tree_id</string>
+    <string name="pref_key_select_doc_tree" translatable="false">select_doc_tree</string>
+    <string name="pref_key_check_credential" translatable="false">check_credentials</string>
+    <string name="pref_key_bio_auth" translatable="false">biometric_Auth</string>
+    <string name="pref_key_explicit" translatable="false">explicit</string>
+    <string name="pref_key_detect_clipboard" translatable="false">detect_clipboard</string>
+    <string name="pref_key_scale_source" translatable="false">scale_source</string>
+    <string name="pref_key_failure_actions" translatable="false">failure_actions</string>
+    <string name="pref_key_post_name_format" translatable="false">fmt_post_name</string>
+    <string name="pref_key_recent_works" translatable="false">recent_works</string>
+
+    <string name="pref_key_cre_pixiv_login" translatable="false">pixiv_login</string>
+    <string name="pref_key_cre_pixiv_access_token" translatable="false">pixiv_access_token</string>
+    <string name="pref_key_cre_pixiv_refresh_token" translatable="false">pixiv_refresh_token</string>
+    <string name="pref_key_cre_saucenao_apikey" translatable="false">saucenao_apikey</string>
+    <string name="pref_key_cre_yandere_username" translatable="false">yandere_username</string>
+    <string name="pref_key_cre_yandere_hash" translatable="false">yandere_hash</string>
+    <string name="pref_key_cre_danbooru_username" translatable="false">danbooru_username</string>
+    <string name="pref_key_cre_danbooru_hash" translatable="false">danbooru_hash</string>
+    <string name="pref_key_cre_gelbooru_username" translatable="false">gelbooru_username</string>
+    <string name="pref_key_cre_gelbooru_hash" translatable="false">gelbooru_hash</string>
+    <string name="pref_key_cre_sankaku_username" translatable="false">sankaku_username</string>
+    <string name="pref_key_cre_sankaku_hash" translatable="false">sankaku_hash</string>
+    <string name="pref_key_cre_konachan_username" translatable="false">konachan_username</string>
+    <string name="pref_key_cre_konachan_hash" translatable="false">konachan_hash</string>
+    <string name="pref_key_cre_safebooru_username" translatable="false">safebooru_username</string>
+    <string name="pref_key_cre_safebooru_hash" translatable="false">safebooru_hash</string>
+
+    <string name="post_fmt_default" translatable="false">${booru} ${id} $(p${part}).${ext}</string>
+
+    <string name="host_pixiv" translatable="false">pixiv.net</string>
+    <string name="host_saucenao" translatable="false">saucenao.com</string>
+    <string name="host_yandere" translatable="false">yande.re</string>
+    <string name="host_danbooru" translatable="false">danbooru.donmai.us</string>
+    <string name="host_gelbooru" translatable="false">gelbooru.com</string>
+    <string name="host_sankaku" translatable="false">chan.sankakucomplex.com</string>
+    <string name="host_konachan" translatable="false">konachan.com</string>
+    <string name="host_safebooru" translatable="false">safebooru.donmai.us</string>
+
+    <string name="default_scheme" translatable="false">kraft</string>
+    <string name="default_authority" translatable="false">yande.re</string>
+    <string name="default_path" translatable="false">/post</string>
+    <string name="default_query" translatable="false">id=687592</string>
+</resources>

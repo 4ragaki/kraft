@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fmt_login_success">%s login success!</string>
+
+    <string name="fmt_post_info_size">Size : %s * %s</string>
+    <string name="fmt_post_info_ext">Ext : %s</string>
+    <string name="fmt_post_info_md5">Md5 : %s</string>
+    <string name="fmt_post_info_file_size">FileSize : %s</string>
+    <string name="fmt_post_info_file_url">FileUrl : %s</string>
+    <string name="fmt_post_info_children">Children : %s</string>
+    <string name="fmt_post_info_parent">Parent : %s</string>
+    <string name="fmt_post_info_source">Source : %s</string>
+</resources>

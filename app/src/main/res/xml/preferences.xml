@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/pref_category_settings">
+        <Preference
+            android:icon="@drawable/ic_pref_document_tree"
+            android:key="@string/pref_key_select_doc_tree"
+            android:title="@string/pref_title_select_doc_tree" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_category_credentials">
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:icon="@drawable/ic_pref_bio_auth"
+            android:key="@string/pref_key_bio_auth"
+            android:summary="@string/pref_summary_bio_auth"
+            android:title="@string/pref_title_bio_auth" />
+
+        <Preference
+            android:icon="@drawable/ic_pref_credential"
+            android:key="@string/pref_key_check_credential"
+            android:title="@string/pref_title_chk_credentials" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_category_preferences">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_pref_explicit"
+            android:key="@string/pref_key_explicit"
+            android:summary="@string/pref_summary_explicit"
+            android:title="@string/pref_title_explicit" />
+
+        <DropDownPreference
+            android:defaultValue="@string/failure_action_value_retry"
+            android:entries="@array/failure_action_entries"
+            android:entryValues="@array/failure_action_values"
+            android:icon="@drawable/download_failure_actions"
+            android:key="@string/pref_key_failure_actions"
+            android:title="@string/pref_title_failure_action"
+            app:useSimpleSummaryProvider="true" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/ic_pref_detect_clipboard"
+            android:key="@string/pref_key_detect_clipboard"
+            android:summary="@string/pref_summary_detect_clipboard"
+            android:title="@string/pref_title_detect_clipboard" />
+
+        <EditTextPreference
+            android:defaultValue="@string/post_fmt_default"
+            android:icon="@drawable/ic_pref_fmt_post_name"
+            android:key="@string/pref_key_post_name_format"
+            android:title="@string/pref_title_post_name_fmt"
+            app:useSimpleSummaryProvider="true" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/ic_pref_scale_source"
+            android:key="@string/pref_key_scale_source"
+            android:summary="@string/pref_summary_scale_source"
+            android:title="@string/pref_title_scale_source" />
+
+        <Preference
+            android:icon="@drawable/ic_pref_works"
+            android:key="@string/pref_key_recent_works"
+            android:summary="@string/pref_summary_recent_works"
+            android:title="@string/pref_title_recent_works" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

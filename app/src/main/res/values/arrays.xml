@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="failure_action_entries">
+        <item>@string/failure_action_retry</item>
+        <item>@string/failure_action_manual</item>
+    </string-array>
+
+    <string-array name="failure_action_values">
+        <item>@string/failure_action_value_retry</item>
+        <item>@string/failure_action_value_manual</item>
+    </string-array>
+
+    <string name="failure_action_value_retry" translatable="false">0</string>
+    <string name="failure_action_value_manual" translatable="false">1</string>
+</resources>

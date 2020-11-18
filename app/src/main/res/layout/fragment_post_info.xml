@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="280dp"
+    android:paddingHorizontal="32dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="64dp">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Avatar"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_user"
+                app:layout_constraintLeft_toRightOf="@id/iv_avatar"
+                app:layout_constraintRight_toLeftOf="@id/btn_follow"
+                app:layout_constraintTop_toTopOf="@id/iv_avatar"
+                tools:text="Kraft" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_user"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+                app:layout_constraintLeft_toRightOf="@id/iv_avatar"
+                app:layout_constraintRight_toLeftOf="@id/btn_follow"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="Aragaki" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_primary"
+                android:padding="16dp"
+                android:src="@drawable/ic_post_user_follow"
+                app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_avatar" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="16dp"
+                android:textIsSelectable="true"
+                app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+                tools:text="The Developer Preview of Android 12 is ready for your testing and feedback! " />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_shows"
+                style="@style/TextAppearance.MaterialComponents.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_post_show"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:paddingVertical="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv_likes"
+                app:layout_constraintTop_toBottomOf="@id/tv_caption"
+                tools:text="12345" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_likes"
+                style="@style/TextAppearance.MaterialComponents.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_post_bookmark"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:paddingVertical="16dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_shows"
+                app:layout_constraintRight_toLeftOf="@id/tv_scores"
+                app:layout_constraintTop_toBottomOf="@id/tv_caption"
+                tools:text="12345" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_scores"
+                style="@style/TextAppearance.MaterialComponents.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_post_score"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:paddingVertical="16dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_likes"
+                app:layout_constraintRight_toLeftOf="@id/tv_rating"
+                app:layout_constraintTop_toBottomOf="@id/tv_caption"
+                tools:text="123" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_rating"
+                style="@style/TextAppearance.MaterialComponents.Overline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_post_rating"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:paddingVertical="16dp"
+                app:layout_constraintLeft_toRightOf="@id/tv_scores"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_caption"
+                tools:text="safe" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tv_shows,tv_likes,tv_scores,tv_rating" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_info"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:autoLink="web"
+                android:textIsSelectable="true"
+                app:layout_constraintTop_toBottomOf="@id/barrier"
+                tools:text="size : 3840 * 2160\n\next : apk\n\nmd5 : 0xCAFEBABE\n\nfile_size : 4 MB\n\nfile : https://files.yande.re/image/4511a32f61a6051b7a373ccd4c1d7378/yande.re%20687592%20dress%20hiten%20penguin.png\n\nchildren : https://aragaki.fun\n\nparent : https://aragaki.fun\n\nsource : https://yande.re/post/show/687592\n\n" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_date"
+                style="@style/TextAppearance.MaterialComponents.Overline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="end"
+                app:layout_constraintTop_toBottomOf="@id/tv_info"
+                tools:text="2021-3-30 23:39" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
