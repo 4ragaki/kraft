@@ -9,8 +9,7 @@
     <string name="pref_key_post_name_format" translatable="false">fmt_post_name</string>
     <string name="pref_key_recent_works" translatable="false">recent_works</string>
 
-    <string name="pref_key_cre_pixiv_username" translatable="false">pixiv_username</string>
-    <string name="pref_key_cre_pixiv_password" translatable="false">pixiv_password</string>
+    <string name="pref_key_cre_pixiv_login" translatable="false">pixiv_login</string>
     <string name="pref_key_cre_pixiv_access_token" translatable="false">pixiv_access_token</string>
     <string name="pref_key_cre_pixiv_refresh_token" translatable="false">pixiv_refresh_token</string>
     <string name="pref_key_cre_saucenao_apikey" translatable="false">saucenao_apikey</string>
@@ -38,6 +37,8 @@
     <string name="host_konachan" translatable="false">konachan.com</string>
     <string name="host_safebooru" translatable="false">safebooru.donmai.us</string>
 
-    <!--    <string name="default_url" translatable="false">kraft://yande.re/post?id=687592</string>-->
-    <string name="default_url" translatable="false">kraft://yande.re/posts?tags=rating:safe</string>
+    <string name="default_scheme" translatable="false">kraft</string>
+    <string name="default_authority" translatable="false">yande.re</string>
+    <string name="default_path" translatable="false">/post</string>
+    <string name="default_query" translatable="false">id=687592</string>
 </resources>

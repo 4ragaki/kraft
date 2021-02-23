@@ -13,8 +13,8 @@ class PixivSite(
     val id: String,
     val credential: String,
     val name: String,
-    val oauthScheme: String,
-    val oauthHost: String,
+    val authScheme: String,
+    val authHost: String,
     val scheme: String,
     val host: String,
     val patternsPostId: String?,
@@ -28,8 +28,7 @@ class PixivSite(
     val subBooruId: Int = 0
 ) {
     fun toBooru(pixivSitesDao: PixivSitesDao) = Boorus.Pixiv(
-        id, credential, subBooruId,
-        name, oauthScheme, oauthHost,
+        subBooruId, name, authScheme, authHost,
         scheme, host, accessToken, refreshToken, { accessToken, refreshToken ->
             this.accessToken = accessToken
             this.refreshToken = refreshToken

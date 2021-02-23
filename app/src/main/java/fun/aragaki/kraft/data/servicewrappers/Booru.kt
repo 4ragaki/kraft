@@ -8,9 +8,6 @@ interface Booru {
     val scheme: String
     val host: String
 
-    val id: String?
-    val credential: String?
-
     //  TODO supporting more contents
     val patternsPostId: String?
     val patternsPostsTags: String?

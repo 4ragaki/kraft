@@ -76,21 +76,21 @@ dependencies {
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
 
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
-    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
-    implementation("androidx.fragment:fragment-ktx:1.3.0-rc02")
+    implementation("androidx.activity:activity-ktx:1.3.0-alpha02")
+    implementation("androidx.fragment:fragment-ktx:1.3.0")
 
     implementation("androidx.navigation:navigation-ui-ktx:2.3.3")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.3")
 
-    implementation("com.google.android.material:material:1.3.0-rc01")
+    implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
-    implementation("androidx.work:work-runtime-ktx:2.5.0-rc01")
+    implementation("androidx.work:work-runtime-ktx:2.5.0")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha12")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-beta01")
 
     implementation("androidx.room:room-runtime:2.2.6")
     implementation("androidx.room:room-ktx:2.2.6")

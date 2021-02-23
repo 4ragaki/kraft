@@ -17,16 +17,13 @@ class PixivWrapper(
     override val booru: Boorus.Pixiv, client: OkHttpClient,
     converter: GsonConverterFactory, override val dependencyTag: String?
 ) : BooruWrapper, PixivToken, PixivSearch, Tags {
-    private val auth = PixivAuth(client, converter, "${booru.oauthScheme}://${booru.oauthHost}")
+    val auth = PixivAuth(client, converter, "${booru.authScheme}://${booru.authHost}")
     override val service = PixivService(client, converter, "${booru.scheme}://${booru.host}")
 
     private suspend fun updateToken(): String {
         kotlin.runCatching {
             booru.refreshToken?.let { if (it.isNotBlank()) return applyToken(pixivTokenRefresh(it)) }
         }.onFailure { it.printStackTrace() }
-        checkAndRun { id, credential ->
-            pixivToken(id, credential).also { return applyToken(it) }
-        }
         throw CredentialException.PixivCredentialEmptyException
     }
 
@@ -47,8 +44,8 @@ class PixivWrapper(
         }
     }
 
-    override suspend fun pixivToken(id: String, credential: String): PixivTokenResponse {
-        return auth.login(id, credential)
+    override suspend fun pixivToken(verifier: String, code: String): PixivTokenResponse {
+        return auth.login(verifier, code)
     }
 
     override suspend fun pixivTokenRefresh(refresh_token: String): PixivTokenResponse {
@@ -71,13 +68,6 @@ class PixivWrapper(
 
     private suspend fun getAccessToken() =
         (booru.accessToken.takeIf { it?.isNotBlank() == true } ?: updateToken()).toBearer()
-
-    private inline fun checkAndRun(block: (id: String, credential: String) -> Unit) {
-        booru.id?.takeIf { it.isNotBlank() }?.let { id ->
-            booru.credential?.takeIf { it.isNotEmpty() }
-                ?.let { credential -> block(id, credential) }
-        }
-    }
 
     private suspend fun applyToken(token: PixivTokenResponse): String {
         booru.accessToken = token.response.access_token

@@ -139,8 +139,6 @@ val boorusModule = DI.Module("boorusModule") {
         val settings = instance<Settings>()
         instance<Boorus.Pixiv, PixivWrapper>(
             arg = Boorus.Pixiv(
-                settings.pixivUsername.value,
-                settings.pixivPassword.value,
                 0, "Pixiv", "https", "oauth.secure.pixiv.net",
                 "https", "app-api.pixiv.net", settings.pixivAccessToken.value,
                 settings.pixivRefreshToken.value, { accessToken, refreshToken ->

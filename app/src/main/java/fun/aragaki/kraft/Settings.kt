@@ -12,8 +12,6 @@ class Settings(private val context: Context, private val preferences: SharedPref
     val fmtPostName =
         StringValue(R.string.pref_key_post_name_format, getString(R.string.post_fmt_default))
 
-    val pixivUsername = StringValue(R.string.pref_key_cre_pixiv_username)
-    val pixivPassword = StringValue(R.string.pref_key_cre_pixiv_password)
     val pixivAccessToken = StringValue(R.string.pref_key_cre_pixiv_access_token)
     val pixivRefreshToken = StringValue(R.string.pref_key_cre_pixiv_refresh_token)
     val sauceNaoApiKey = StringValue(R.string.pref_key_cre_saucenao_apikey)

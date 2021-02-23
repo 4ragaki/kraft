@@ -122,7 +122,7 @@ object DownloadCompanion {
             val pendingIntent = PendingIntent.getActivity(
                 context, AVAILABLE_REQUEST_CODE++,
                 Intent(Intent.ACTION_VIEW, uri),
-                PendingIntent.FLAG_ONE_SHOT
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
             )
             return NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_download_success)
@@ -142,15 +142,14 @@ object DownloadCompanion {
                 Intent(context, DownloadReceiver::class.java).apply {
                     action = DownloadReceiver.ACTION_RETRY
                     putExtra(DownloadReceiver.EXTRA_TASK, task)
-                }, PendingIntent.FLAG_ONE_SHOT
+                }, PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
             )
             val cancel = PendingIntent.getBroadcast(
                 context, AVAILABLE_REQUEST_CODE++,
                 Intent(context, DownloadReceiver::class.java).apply {
                     action = DownloadReceiver.ACTION_CANCEL
                     putExtra(DownloadReceiver.EXTRA_TASK, task)
-                },
-                PendingIntent.FLAG_ONE_SHOT
+                }, PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
             )
             return NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_download_failure)

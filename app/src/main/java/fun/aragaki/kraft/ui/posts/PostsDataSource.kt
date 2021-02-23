@@ -3,6 +3,7 @@ package `fun`.aragaki.kraft.ui.posts
 import `fun`.aragaki.kraft.data.entities.Post
 import `fun`.aragaki.kraft.data.features.Tags
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 
 class PostsDataSource(private val backend: Tags, private val tags: String?) :
     PagingSource<Int, Post>() {
@@ -17,4 +18,6 @@ class PostsDataSource(private val backend: Tags, private val tags: String?) :
         }
         return LoadResult.Error(Exception())
     }
+
+    override fun getRefreshKey(state: PagingState<Int, Post>) = 0
 }

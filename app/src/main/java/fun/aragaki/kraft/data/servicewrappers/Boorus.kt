@@ -5,8 +5,8 @@ import `fun`.aragaki.kraft.POSTS_DIR
 sealed class Boorus : Booru {
 
     class Danbooru(
-        override val id: String?,
-        override val credential: String?,
+        val id: String?,
+        val credential: String?,
 
         override val booruSubId: Int,
         override val name: String,
@@ -29,8 +29,8 @@ sealed class Boorus : Booru {
     }
 
     class Moebooru(
-        override val id: String?,
-        override val credential: String?,
+        val id: String?,
+        val credential: String?,
 
         override val booruSubId: Int,
         override val name: String,
@@ -54,8 +54,8 @@ sealed class Boorus : Booru {
     }
 
     class Gelbooru(
-        override val id: String?,
-        override val credential: String?,
+        val id: String?,
+        val credential: String?,
 
         override val booruSubId: Int,
         override val name: String,
@@ -78,8 +78,8 @@ sealed class Boorus : Booru {
     }
 
     class Sankaku(
-        override val id: String?,
-        override val credential: String?,
+        val id: String?,
+        val credential: String?,
 
         override val booruSubId: Int,
         override val name: String,
@@ -103,14 +103,11 @@ sealed class Boorus : Booru {
     }
 
     class Pixiv(
-        override val id: String?,
-        override val credential: String?,
-
         override val booruSubId: Int,
         override val name: String,
 
-        val oauthScheme: String,
-        val oauthHost: String,
+        val authScheme: String,
+        val authHost: String,
         override val scheme: String,
         override val host: String,
 

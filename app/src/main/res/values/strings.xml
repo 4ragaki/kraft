@@ -32,8 +32,8 @@
     <string name="pref_title_post_name_fmt">post name format</string>
     <string name="pref_title_recent_works">recent works</string>
     <string name="pref_summary_recent_works">auto-pruned after a sane period of time.</string>
-    <string name="pref_title_cred_pixiv_user">Pixiv Username</string>
-    <string name="pref_title_cred_pixiv_pwd">Pixiv Password</string>
+    <string name="pref_title_cred_pixiv_login">Login</string>
+    <string name="pref_summary_cred_pixiv_login">open via a browser.</string>
     <string name="pref_title_cred_pixiv_access_token">Pixiv Access Token</string>
     <string name="pref_title_cred_pixiv_refresh_token">Pixiv Refresh Token</string>
     <string name="pref_title_cred_saucenao_apikey">SauceNao ApiKey</string>
@@ -55,7 +55,10 @@
     <string name="download_action_cancel">Cancel</string>
     <string name="title_choose">Choose:</string>
     <string name="label_posts">Posts</string>
-    <string name="hint_url">url</string>
+    <string name="hint_scheme">scheme</string>
+    <string name="hint_authority">authority</string>
+    <string name="hint_path">path</string>
+    <string name="hint_query">query</string>
 
     <string name="title_post_selected_download">Download</string>
 
