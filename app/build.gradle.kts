@@ -120,4 +120,5 @@ dependencies {
     implementation("io.coil-kt:coil-svg:0.11.0")
 
     implementation("com.airbnb.android:lottie:3.6.0")
+    implementation("androidx.webkit:webkit:1.4.0")
 }

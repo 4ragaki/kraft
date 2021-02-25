@@ -7,6 +7,7 @@ import `fun`.aragaki.kraft.ext.resolveColor
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -17,6 +18,8 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.webkit.WebSettingsCompat
+import androidx.webkit.WebViewFeature
 import org.kodein.di.DI
 import org.kodein.di.DIAware
 import org.kodein.di.android.x.closestDI
@@ -25,7 +28,7 @@ class WebViewFragment(private val image: Uri) : Fragment(), DIAware {
     override val di: DI by closestDI()
 
     lateinit var binding: FragmentWebviewBinding
-    private val viewModel by viewModels<ReverseViewModel> { ViewModelFactory(Kraft.app) }
+    private val viewModel by viewModels<ReverseViewModel> { ViewModelFactory }
 
     private var mUrl: String = ""
     private var mTitle: String = ""
@@ -69,7 +72,19 @@ class WebViewFragment(private val image: Uri) : Fragment(), DIAware {
 
         web.apply {
             registerForContextMenu(this)
-            settings.javaScriptEnabled = true
+            settings.apply {
+                if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+                    when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                        Configuration.UI_MODE_NIGHT_YES -> WebSettingsCompat.setForceDark(
+                            this, WebSettingsCompat.FORCE_DARK_ON
+                        )
+                        Configuration.UI_MODE_NIGHT_NO, Configuration.UI_MODE_NIGHT_UNDEFINED -> WebSettingsCompat.setForceDark(
+                            this, WebSettingsCompat.FORCE_DARK_OFF
+                        )
+                    }
+                }
+                javaScriptEnabled = true
+            }
 
             viewTreeObserver.addOnScrollChangedListener {
                 binding.swipeWeb.isEnabled = scrollY == 0

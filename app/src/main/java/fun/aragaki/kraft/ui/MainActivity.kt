@@ -1,6 +1,5 @@
 package `fun`.aragaki.kraft.ui
 
-import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.Settings
 import `fun`.aragaki.kraft.databinding.ActivityMainBinding
@@ -29,7 +28,7 @@ class MainActivity : BaseActivity() {
     override val di: DI by retainedDI {
         extend(parentDI)
     }
-    private val credentialsVM by viewModels<CredentialsViewModel> { ViewModelFactory(Kraft.app) }
+    private val credentialsVM by viewModels<CredentialsViewModel> { ViewModelFactory }
     private val settings by instance<Settings>()
     lateinit var requestDocumentTree: ActivityResultLauncher<Uri>
 

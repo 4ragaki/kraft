@@ -25,7 +25,7 @@ class SauceNaoFragment(private val image: Uri) : Fragment(), DIAware {
     override val di: DI by closestDI()
 
     lateinit var binding: FragmentSaucenaoBinding
-    private val viewModel by viewModels<ReverseViewModel> { ViewModelFactory(Kraft.app) }
+    private val viewModel by viewModels<ReverseViewModel> { ViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -10,11 +10,12 @@ sealed class Boorus : Booru {
 
         override val booruSubId: Int,
         override val name: String,
+        override val authority: String,
         override val scheme: String,
         override val host: String,
 
-        override val patternsPostId: String?,
-        override val patternsPostsTags: String?,
+        override val patternsPostId: String = patternPostId(authority),
+        override val patternsPostsTags: String = patternPostsTags(authority),
         override val folder: Array<String> = arrayOf(POSTS_DIR, name)
     ) : Boorus() {
         override val booruType: Int = BooruType.Danbooru.ordinal
@@ -34,12 +35,13 @@ sealed class Boorus : Booru {
 
         override val booruSubId: Int,
         override val name: String,
+        override val authority: String,
         override val scheme: String,
         override val host: String,
 
         val hashSalt: String?,
-        override val patternsPostId: String?,
-        override val patternsPostsTags: String?,
+        override val patternsPostId: String = patternPostId(authority),
+        override val patternsPostsTags: String = patternPostsTags(authority),
         override val folder: Array<String> = arrayOf(POSTS_DIR, name)
     ) : Boorus() {
         override val booruType: Int = BooruType.Moebooru.ordinal
@@ -59,11 +61,12 @@ sealed class Boorus : Booru {
 
         override val booruSubId: Int,
         override val name: String,
+        override val authority: String,
         override val scheme: String,
         override val host: String,
 
-        override val patternsPostId: String?,
-        override val patternsPostsTags: String?,
+        override val patternsPostId: String = patternPostId(authority),
+        override val patternsPostsTags: String = patternPostsTags(authority),
         override val folder: Array<String> = arrayOf(POSTS_DIR, name)
     ) : Boorus() {
         override val booruType: Int = BooruType.Gelbooru.ordinal
@@ -83,12 +86,13 @@ sealed class Boorus : Booru {
 
         override val booruSubId: Int,
         override val name: String,
+        override val authority: String,
         override val scheme: String,
         override val host: String,
 
         val hashSalt: String?,
-        override val patternsPostId: String?,
-        override val patternsPostsTags: String?,
+        override val patternsPostId: String = patternPostId(authority),
+        override val patternsPostsTags: String = patternPostsTags(authority),
         override val folder: Array<String> = arrayOf(POSTS_DIR, name)
     ) : Boorus() {
         override val booruType: Int = BooruType.Sankaku.ordinal
@@ -105,6 +109,7 @@ sealed class Boorus : Booru {
     class Pixiv(
         override val booruSubId: Int,
         override val name: String,
+        override val authority: String,
 
         val authScheme: String,
         val authHost: String,
@@ -115,8 +120,8 @@ sealed class Boorus : Booru {
         var refreshToken: String?,
         val tokenCallback: suspend (accessToken: String, refreshToken: String) -> Unit,
 
-        override val patternsPostId: String?,
-        override val patternsPostsTags: String?,
+        override val patternsPostId: String = patternPostId(authority),
+        override val patternsPostsTags: String = patternPostsTags(authority),
         override val folder: Array<String> = arrayOf(POSTS_DIR, name)
     ) : Boorus() {
         override val booruType: Int = BooruType.Pixiv.ordinal

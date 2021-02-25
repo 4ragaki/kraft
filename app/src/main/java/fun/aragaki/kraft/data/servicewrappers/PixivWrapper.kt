@@ -17,7 +17,7 @@ class PixivWrapper(
     override val booru: Boorus.Pixiv, client: OkHttpClient,
     converter: GsonConverterFactory, override val dependencyTag: String?
 ) : BooruWrapper, PixivToken, PixivSearch, Tags {
-    val auth = PixivAuth(client, converter, "${booru.authScheme}://${booru.authHost}")
+    private val auth = PixivAuth(client, converter, "${booru.authScheme}://${booru.authHost}")
     override val service = PixivService(client, converter, "${booru.scheme}://${booru.host}")
 
     private suspend fun updateToken(): String {

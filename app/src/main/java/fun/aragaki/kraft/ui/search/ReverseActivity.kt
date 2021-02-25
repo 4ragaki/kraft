@@ -2,7 +2,6 @@ package `fun`.aragaki.kraft.ui.search
 
 import `fun`.aragaki.kraft.HOST_IQDB
 import `fun`.aragaki.kraft.HOST_SAUCENAO
-import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.databinding.ActivityReverseBinding
 import `fun`.aragaki.kraft.ext.applyVerticalInsets
@@ -36,7 +35,7 @@ class ReverseActivity : BaseSwipeBackActivity() {
         { switchAndCache(HOST_IQDB) { WebViewFragment(image) } })
     private var service = services[serviceIndex]
     private val fragmentCache = mutableMapOf<String, Fragment>()
-    private val viewModel by viewModels<ReverseViewModel> { ViewModelFactory(Kraft.app) }
+    private val viewModel by viewModels<ReverseViewModel> { ViewModelFactory }
     private lateinit var image: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {

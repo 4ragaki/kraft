@@ -12,17 +12,12 @@ class GelbooruSite(
     val id: String?,
     val credential: String?,
     val name: String,
+    val authority: String,
     val scheme: String,
     val host: String,
-    val patternsPostId: String,
-    val patternsPostsTags: String,
-    val folder: List<String>,
 
     @PrimaryKey(autoGenerate = true)
     val subBooruId: Int = 0
 ) {
-    fun toBooru() = Boorus.Gelbooru(
-        id, credential, subBooruId, name, scheme,
-        host, patternsPostId, patternsPostsTags, folder.toTypedArray()
-    )
+    fun toBooru() = Boorus.Gelbooru(id, credential, subBooruId, name, authority, scheme, host)
 }

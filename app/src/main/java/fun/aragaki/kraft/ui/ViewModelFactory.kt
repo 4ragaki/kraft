@@ -10,7 +10,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val app: Kraft) : ViewModelProvider.Factory {
+object ViewModelFactory : ViewModelProvider.Factory {
+    private val app: Kraft = Kraft.app
     override fun <T : ViewModel?> create(modelClass: Class<T>) = when {
         modelClass.isAssignableFrom(ReverseViewModel::class.java) -> ReverseViewModel(app) as T
         modelClass.isAssignableFrom(PostViewModel::class.java) -> PostViewModel(app) as T

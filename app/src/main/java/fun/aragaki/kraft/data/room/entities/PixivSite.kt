@@ -13,13 +13,11 @@ class PixivSite(
     val id: String,
     val credential: String,
     val name: String,
+    val authority: String,
     val authScheme: String,
     val authHost: String,
     val scheme: String,
     val host: String,
-    val patternsPostId: String?,
-    val patternsPostsTags: String,
-    val folder: List<String>,
 
     var accessToken: String? = null,
     var refreshToken: String? = null,
@@ -28,11 +26,11 @@ class PixivSite(
     val subBooruId: Int = 0
 ) {
     fun toBooru(pixivSitesDao: PixivSitesDao) = Boorus.Pixiv(
-        subBooruId, name, authScheme, authHost,
+        subBooruId, name, authority, authScheme, authHost,
         scheme, host, accessToken, refreshToken, { accessToken, refreshToken ->
             this.accessToken = accessToken
             this.refreshToken = refreshToken
             pixivSitesDao.update(this)
-        }, patternsPostId, patternsPostsTags, folder.toTypedArray()
+        }
     )
 }

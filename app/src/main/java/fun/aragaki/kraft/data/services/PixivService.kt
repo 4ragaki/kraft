@@ -27,10 +27,10 @@ interface PixivService {
         @Query("include_translated_tag_results") include_translated_tag_results: Boolean = true
     ): PixivRankResponse
 
-    @GET("v1/illust/detail?filter=for_android")
+    @GET("v1/illust/detail")
     suspend fun getIllustByID(
         @Header("Authorization") token: String,
-        @Query("illust_id") illust_id: Long
+        @Query("illust_id") illust_id: Long,
     ): PixivIllustrationResponse
 
     companion object {

@@ -23,6 +23,7 @@ import java.io.ByteArrayOutputStream
 import java.util.*
 import kotlin.math.max
 
+@Suppress("UNNECESSARY_NOT_NULL_ASSERTION")
 class ReverseViewModel(app: Kraft) : AndroidViewModel(app) {
     private val images = LinkedList<Uri>()
     private val _image = MutableLiveData<Uri>()

@@ -1,6 +1,5 @@
 package `fun`.aragaki.kraft.ui.preferences
 
-import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.SHARE_IMAGEVIEW
 import `fun`.aragaki.kraft.adapters.QuickAdapter
 import `fun`.aragaki.kraft.databinding.FragmentWorksBinding
@@ -25,7 +24,7 @@ class WorksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = FragmentWorksBinding.inflate(layoutInflater).apply {
-        val viewModel by viewModels<WorksViewModel> { ViewModelFactory(Kraft.app) }
+        val viewModel by viewModels<WorksViewModel> { ViewModelFactory }
 
         rvWorks.apply {
             layoutManager = LinearLayoutManager(requireContext())

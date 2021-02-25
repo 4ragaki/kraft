@@ -1,6 +1,5 @@
 package `fun`.aragaki.kraft.ui.post
 
-import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.data.UnsupportedException
@@ -39,7 +38,7 @@ class PostActivity : BaseSwipeBackActivity() {
     }
 
     var actionMode: ActionMode? = null
-    private val viewModel by viewModels<PostViewModel> { (ViewModelFactory(Kraft.app)) }
+    private val viewModel by viewModels<PostViewModel> { ViewModelFactory }
     private lateinit var binding: ActivityPostBinding
     private var resumeCallback: (() -> Unit)? = null
 

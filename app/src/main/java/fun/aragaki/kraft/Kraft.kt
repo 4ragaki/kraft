@@ -10,7 +10,7 @@ import org.kodein.di.*
 class Kraft : Application(), DIAware {
 
     override val di: DI by DI.lazy {
-        bind<Context>() with singleton { this@Kraft }
+        bind<Context>() with instance(this@Kraft)
         import(supportModule)
         import(databaseModule)
         import(serviceModule)

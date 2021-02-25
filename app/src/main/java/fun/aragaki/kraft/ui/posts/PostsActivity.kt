@@ -1,6 +1,5 @@
 package `fun`.aragaki.kraft.ui.posts
 
-import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.databinding.ActivityPostsBinding
 import `fun`.aragaki.kraft.ext.findUrls
 import `fun`.aragaki.kraft.ui.ViewModelFactory
@@ -23,7 +22,7 @@ class PostsActivity : BaseSwipeBackActivity() {
         extend(parentDI)
     }
     private lateinit var binding: ActivityPostsBinding
-    private val viewModel by viewModels<PostsViewModel> { ViewModelFactory(Kraft.app) }
+    private val viewModel by viewModels<PostsViewModel> { ViewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

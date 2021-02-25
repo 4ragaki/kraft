@@ -32,8 +32,8 @@ class PostViewModel(app: Kraft) : AndroidViewModel(app) {
             kotlin.runCatching out@{
                 if (uri.scheme.equals(SCHEME, true)) {
                     boorus.forEach {
-                        if (it.booru.host.equals(uri.host, true)
-                            || it.booru.name.equals(uri.host, true)
+                        if (it.booru.authority.equals(uri.host, true)
+                            or it.booru.name.equals(uri.host, true)
                         ) {
                             retrieve(it, uri.getQueryParameter(PARAMETER_POST_ID)?.toLong()!!)
                             onSuccess()

@@ -18,7 +18,7 @@ interface PixivAuth {
         @Field("client_id") client_id: String = CLIENT_ID,
         @Field("client_secret") client_secret: String = CLIENT_SECRET,
         @Field("grant_type") grant_type: String = "authorization_code",
-        @Field("redirect_uri") redirect_uri: String = "https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback",  //https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback
+        @Field("redirect_uri") redirect_uri: String = "https://app-api.pixiv.net/web/v1/users/auth/pixiv/callback",
         @Field("include_policy") include_policy: Boolean = true
     ): PixivTokenResponse
 

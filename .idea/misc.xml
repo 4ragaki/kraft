@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_webview.xml" value="0.1814814814814815" />
         <entry key="app/src/main/res/xml/preferences_credentials.xml" value="0.19166666666666668" />
       </map>
     </option>

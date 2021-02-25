@@ -12,17 +12,12 @@ class DanbooruSite(
     val id: String?,
     val credential: String?,
     val name: String,
+    val authority: String,
     val scheme: String,
     val host: String,
-    val patternsPostId: String,
-    val patternsPostsTags: String,
-    val folder: List<String>,
 
     @PrimaryKey(autoGenerate = true)
     val subBooru: Int = 0
 ) {
-    fun toBooru() = Boorus.Danbooru(
-        id, credential, subBooru, name,
-        scheme, host, patternsPostId, patternsPostsTags, folder.toTypedArray()
-    )
+    fun toBooru() = Boorus.Danbooru(id, credential, subBooru, name, authority, scheme, host)
 }

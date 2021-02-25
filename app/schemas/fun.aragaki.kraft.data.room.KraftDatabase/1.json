@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4b098694f1014cfd00e2c108d493a86e",
+    "identityHash": "0580b54ffea56f6c7b8721e3fd1d8022",
     "entities": [
       {
         "tableName": "MoebooruSites",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `hashSalt` TEXT, `patternsPostId` TEXT NOT NULL, `patternsPostsTags` TEXT NOT NULL, `folder` TEXT NOT NULL, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `authority` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `hashSalt` TEXT, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -27,6 +27,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "authority",
+            "columnName": "authority",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "scheme",
             "columnName": "scheme",
             "affinity": "TEXT",
@@ -43,24 +49,6 @@
             "columnName": "hashSalt",
             "affinity": "TEXT",
             "notNull": false
-          },
-          {
-            "fieldPath": "patternsPostId",
-            "columnName": "patternsPostId",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternsPostsTags",
-            "columnName": "patternsPostsTags",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "folder",
-            "columnName": "folder",
-            "affinity": "TEXT",
-            "notNull": true
           },
           {
             "fieldPath": "subBooruId",
@@ -125,7 +113,7 @@
       },
       {
         "tableName": "DanbooruSites",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `patternsPostId` TEXT NOT NULL, `patternsPostsTags` TEXT NOT NULL, `folder` TEXT NOT NULL, `subBooru` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `authority` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `subBooru` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -146,6 +134,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "authority",
+            "columnName": "authority",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "scheme",
             "columnName": "scheme",
             "affinity": "TEXT",
@@ -154,24 +148,6 @@
           {
             "fieldPath": "host",
             "columnName": "host",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternsPostId",
-            "columnName": "patternsPostId",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternsPostsTags",
-            "columnName": "patternsPostsTags",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "folder",
-            "columnName": "folder",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -262,7 +238,7 @@
       },
       {
         "tableName": "GelbooruSites",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `patternsPostId` TEXT NOT NULL, `patternsPostsTags` TEXT NOT NULL, `folder` TEXT NOT NULL, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `authority` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -283,6 +259,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "authority",
+            "columnName": "authority",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "scheme",
             "columnName": "scheme",
             "affinity": "TEXT",
@@ -291,24 +273,6 @@
           {
             "fieldPath": "host",
             "columnName": "host",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternsPostId",
-            "columnName": "patternsPostId",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternsPostsTags",
-            "columnName": "patternsPostsTags",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "folder",
-            "columnName": "folder",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -375,7 +339,7 @@
       },
       {
         "tableName": "SankakuSites",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `hashSalt` TEXT, `patternsPostId` TEXT, `patternsPostsTags` TEXT NOT NULL, `folder` TEXT NOT NULL, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT, `credential` TEXT, `name` TEXT NOT NULL, `authority` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `hashSalt` TEXT, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -396,6 +360,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "authority",
+            "columnName": "authority",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "scheme",
             "columnName": "scheme",
             "affinity": "TEXT",
@@ -412,24 +382,6 @@
             "columnName": "hashSalt",
             "affinity": "TEXT",
             "notNull": false
-          },
-          {
-            "fieldPath": "patternsPostId",
-            "columnName": "patternsPostId",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "patternsPostsTags",
-            "columnName": "patternsPostsTags",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "folder",
-            "columnName": "folder",
-            "affinity": "TEXT",
-            "notNull": true
           },
           {
             "fieldPath": "subBooruId",
@@ -542,7 +494,7 @@
       },
       {
         "tableName": "PixivSites",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `credential` TEXT NOT NULL, `name` TEXT NOT NULL, `authScheme` TEXT NOT NULL, `authHost` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `patternsPostId` TEXT, `patternsPostsTags` TEXT NOT NULL, `folder` TEXT NOT NULL, `accessToken` TEXT, `refreshToken` TEXT, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `credential` TEXT NOT NULL, `name` TEXT NOT NULL, `authority` TEXT NOT NULL, `authScheme` TEXT NOT NULL, `authHost` TEXT NOT NULL, `scheme` TEXT NOT NULL, `host` TEXT NOT NULL, `accessToken` TEXT, `refreshToken` TEXT, `subBooruId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -559,6 +511,12 @@
           {
             "fieldPath": "name",
             "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "authority",
+            "columnName": "authority",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -583,24 +541,6 @@
           {
             "fieldPath": "host",
             "columnName": "host",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternsPostId",
-            "columnName": "patternsPostId",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "patternsPostsTags",
-            "columnName": "patternsPostsTags",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "folder",
-            "columnName": "folder",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -681,7 +621,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4b098694f1014cfd00e2c108d493a86e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0580b54ffea56f6c7b8721e3fd1d8022')"
     ]
   }
 }

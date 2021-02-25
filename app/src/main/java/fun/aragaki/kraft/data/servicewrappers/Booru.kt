@@ -5,6 +5,7 @@ interface Booru {
     val booruSubId: Int
 
     val name: String
+    val authority: String
     val scheme: String
     val host: String
 

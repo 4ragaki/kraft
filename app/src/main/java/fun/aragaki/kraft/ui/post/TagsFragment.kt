@@ -1,6 +1,5 @@
 package `fun`.aragaki.kraft.ui.post
 
-import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
 import `fun`.aragaki.kraft.databinding.FragmentPostTagBinding
@@ -15,9 +14,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
 class TagsFragment : BottomSheetDialogFragment() {
-    private val viewModel by viewModels<PostViewModel>({ requireActivity() }) {
-        ViewModelFactory(Kraft.app)
-    }
+    private val viewModel by viewModels<PostViewModel>({ requireActivity() }) { ViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
