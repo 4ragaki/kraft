@@ -18,7 +18,7 @@ class PostHolder(binding: ItemPostBinding) : BaseHolder<ItemPostBinding>(binding
         binding.root.setOnClickListener { v ->
             if (this::_post.isInitialized) {
                 v.context.startActivity<PostActivity> {
-                    it.data =
+                    data =
                         Uri.parse("$SCHEME://${_post.pWrapper.booru.host}/post?id=${_post.postId()}")
                 }
             }

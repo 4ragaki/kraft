@@ -8,10 +8,12 @@ import android.provider.DocumentsContract
 import androidx.documentfile.provider.DocumentFile
 
 inline fun <reified A : Activity> Context.startActivity(
-    options: Bundle? = null, noinline intent: ((intent: Intent) -> Unit)? = null
+    options: Bundle? = null, noinline intent: (Intent.() -> Unit) = {}
 ) {
-    startActivity(Intent(this, A::class.java).apply { intent?.let { intent(this) } }, options)
+    startActivity(Intent(this, A::class.java).apply(intent), options)
 }
 
 fun Context.getDocumentTree(authority: String, treeId: String) =
     DocumentFile.fromTreeUri(this, DocumentsContract.buildTreeDocumentUri(authority, treeId))
+
+//val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")

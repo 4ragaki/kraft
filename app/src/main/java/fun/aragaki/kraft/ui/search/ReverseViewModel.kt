@@ -2,6 +2,7 @@ package `fun`.aragaki.kraft.ui.search
 
 import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.Settings
+import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.data.entities.SauceNaoResponse
 import `fun`.aragaki.kraft.data.services.IQDBService
 import `fun`.aragaki.kraft.data.services.SauceNaoService
@@ -43,7 +44,8 @@ class ReverseViewModel(app: Kraft) : AndroidViewModel(app) {
                     kotlin.runCatching {
                         _sauceNaoResponse.value = withContext(Dispatchers.IO) {
                             sauceNaoService.search(
-                                settings.sauceNaoApiKey.value ?: "",
+                                settings.sauceNaoApiKey.value.takeIf { it?.isNotBlank() == true }
+                                    ?: throw CredentialException.SauceNaoApiKeyEmptyException,
                                 MultipartBody.Part.createFormData(
                                     "file", name, bytes.toRequestBody()
                                 )

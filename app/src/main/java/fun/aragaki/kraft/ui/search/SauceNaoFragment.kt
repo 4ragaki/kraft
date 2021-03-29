@@ -3,9 +3,13 @@ package `fun`.aragaki.kraft.ui.search
 import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.adapters.QuickAdapter
+import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.databinding.FragmentSaucenaoBinding
 import `fun`.aragaki.kraft.databinding.ItemSaucenaoBinding
 import `fun`.aragaki.kraft.ext.resolveColor
+import `fun`.aragaki.kraft.ext.snack
+import `fun`.aragaki.kraft.ext.startActivity
+import `fun`.aragaki.kraft.ui.JumpActivity
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import android.content.Intent
 import android.net.Uri
@@ -81,7 +85,15 @@ class SauceNaoFragment(private val image: Uri) : Fragment(), DIAware {
     private fun request() {
         viewModel.sauceNao(image) {
             binding.swipeSauce.isRefreshing = false
-            Toast.makeText(Kraft.app, it.message, Toast.LENGTH_SHORT)
+            if (it is CredentialException)
+                binding.root.snack(it.message, getString(R.string.action_jump_to)) {
+                    requireContext().startActivity<JumpActivity> {
+                        putExtra(
+                            JumpActivity.EXTRA_DESTINATION, R.id.nav_dest_credentials
+                        )
+                    }
+                }
+            else Toast.makeText(Kraft.app, it.message, Toast.LENGTH_SHORT)
                 .show()
         }
     }

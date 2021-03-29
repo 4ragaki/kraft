@@ -39,8 +39,7 @@ class WorksFragment : Fragment() {
                                     SHARE_IMAGEVIEW
                                 ).toBundle()
                             ) {
-                                it.data =
-                                    Uri.parse(workInfo.outputData.getString(DownloadOutput.uri))
+                                data = Uri.parse(workInfo.outputData.getString(DownloadOutput.uri))
                             }
                         }
                     },

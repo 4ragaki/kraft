@@ -98,8 +98,8 @@ class PostActivity : BaseSwipeBackActivity() {
                 is CredentialException -> {
                     binding.root.snack(it.message, getString(R.string.action_jump_to)) {
                         resumeCallback = { launch(intent) }
-                        startActivity<JumpActivity> { intent ->
-                            intent.putExtra(
+                        startActivity<JumpActivity> {
+                            putExtra(
                                 JumpActivity.EXTRA_DESTINATION, R.id.nav_dest_credentials
                             )
                         }
