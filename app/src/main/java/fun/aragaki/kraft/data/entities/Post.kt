@@ -1,6 +1,7 @@
 package `fun`.aragaki.kraft.data.entities
 
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
+import `fun`.aragaki.kraft.worker.Downloader
 
 abstract class Post {
     abstract var pWrapper: BooruWrapper
@@ -10,6 +11,7 @@ abstract class Post {
     abstract fun postPreview(): String?
     abstract fun postId(): Long
     abstract fun preview(): Preview
+    abstract fun info(): Info
     abstract fun downloads(postNameFmt: String): List<Download>?
     abstract fun message(): String?
 
@@ -41,4 +43,39 @@ abstract class Post {
         private const val ATTR_TAGS = """\$\{tags\}"""
         private const val ATTR_EXT = """\$\{ext\}"""
     }
+
+
+    class Info(
+        val uploaderId: Long?,
+        val uploaderName: suspend () -> String?,
+        val uploaderAvatar: suspend () -> String?,
+        val isFollowed: Boolean?,
+        val title: String?,
+//    spannable,content
+        val caption: Pair<Boolean, String?>?,
+//    gone,content
+        val shows: Pair<Boolean, String?>,
+        val likes: Pair<Boolean, String?>,
+        val scores: Pair<Boolean, String?>,
+        val rating: Pair<Boolean, String?>,
+        val info: (strGetter: (id: Int) -> String) -> String,
+        val date: String?
+    )
+
+    class Preview(
+        val urls: List<String?>,
+        val dependencyTag: String?,
+        val info: Info?,
+        val tags: Map<String, List<String>?>
+    )
+
+    class Download(
+        val url: String,
+        val folder: Array<String>?,
+        val dependencyTag: String?,
+        val filename: String,
+        val headers: Array<String>? = null,
+        val contentLength: Long = Downloader.UNDEFINED_CONTENT_LENGTH,
+        val mime: String? = null
+    )
 }

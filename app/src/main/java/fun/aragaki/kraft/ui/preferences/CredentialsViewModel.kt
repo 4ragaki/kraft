@@ -32,8 +32,8 @@ class CredentialsViewModel(app: Kraft) : AndroidViewModel(app) {
                         viewModelScope.launch(Dispatchers.IO) {
                             pixiv.pixivToken(pkceParameters.verifier, code).run {
                                 settings.edit {
-                                    it.putString(settings.pixivAccessToken.key, access_token)
-                                    it.putString(settings.pixivRefreshToken.key, refresh_token)
+                                    putString(settings.pixivAccessToken.key, access_token)
+                                    putString(settings.pixivRefreshToken.key, refresh_token)
                                 }
                                 withContext(Dispatchers.Main) {
                                     success(pixiv.booru.authHost)

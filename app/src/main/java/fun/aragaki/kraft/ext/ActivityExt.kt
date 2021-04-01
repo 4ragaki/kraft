@@ -24,11 +24,9 @@ fun ComponentActivity.registerRequestDocumentTree(settings: Settings) =
             contentResolver.takePersistableUriPermission(
                 it, Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
             )
-            settings.edit { preferences ->
-                preferences.putString(settings.docTreeAuthority.key, it.authority)
-                preferences.putString(
-                    settings.docTreeId.key, DocumentsContract.getTreeDocumentId(it)
-                )
+            settings.edit {
+                putString(settings.docTreeAuthority.key, it.authority)
+                putString(settings.docTreeId.key, DocumentsContract.getTreeDocumentId(it))
             }
         }
     }

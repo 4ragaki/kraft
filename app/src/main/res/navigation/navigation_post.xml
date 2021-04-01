@@ -10,7 +10,13 @@
         tools:layout="@layout/fragment_post" />
 
     <dialog
+        android:id="@+id/nav_post_info"
+        android:name="fun.aragaki.kraft.ui.post.InfoFragment"
+        tools:layout="@layout/fragment_post_info" />
+
+    <dialog
         android:id="@+id/nav_post_tag"
-        android:name="fun.aragaki.kraft.ui.post.TagsFragment" />
+        android:name="fun.aragaki.kraft.ui.post.TagsFragment"
+        tools:layout="@layout/fragment_post_tag" />
 
 </navigation>

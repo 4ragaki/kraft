@@ -1,5 +1,6 @@
 package `fun`.aragaki.kraft.data.entities
 
+import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
 import `fun`.aragaki.kraft.ext.extension
@@ -7,6 +8,7 @@ import `fun`.aragaki.kraft.ext.splitByBlank
 import com.tickaroo.tikxml.annotation.Attribute
 import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.Xml
+import java.text.SimpleDateFormat
 
 @Xml
 data class GelbooruPostResponse(
@@ -26,7 +28,7 @@ data class GelbooruPostResponse(
         @Attribute(name = "height")
         val height: Int,
         @Attribute(name = "score")
-        val score: String,
+        val score: Int,
         @Attribute(name = "file_url")
         val fileUrl: String?,
         @Attribute(name = "sample_url")
@@ -42,7 +44,7 @@ data class GelbooruPostResponse(
         @Attribute(name = "tags")
         val tags: String,
         @Attribute(name = "creator_id")
-        val creatorId: Int,
+        val creatorId: Long,
         @Attribute(name = "has_children")
         val hasChildren: Boolean,
         @Attribute(name = "created_at")
@@ -66,8 +68,42 @@ data class GelbooruPostResponse(
         override fun postPreview() = previewUrl
 
         override fun preview() = Preview(
-            listOf(sampleUrl), pWrapper.dependencyTag, null,
-            mapOf(TagType.Undefined.key to tags.splitByBlank()), createdAt
+            listOf(sampleUrl), pWrapper.dependencyTag, info(),
+            mapOf(TagType.Undefined.key to tags.splitByBlank())
+        )
+
+        override fun info() = Info(
+            creatorId,
+            { null },
+            { null },
+            null,
+            pTitle,
+            null,
+            true to null,
+            true to null,
+            false to score.toString(),
+            false to rating,
+            {
+                buildString {
+                    height.let { h ->
+                        width.let { w ->
+                            append(it(R.string.fmt_post_info_size).format(h, w))
+                            append("\n\n")
+                        }
+                    }
+                    fileUrl?.let {
+                        append(it(R.string.fmt_post_info_file_url).format(it))
+                        append("\n\n")
+                    }
+                    source.let {
+                        append(it(R.string.fmt_post_info_source).format(source))
+                        append("\n\n")
+                    }
+                }
+            },
+            createdAt
+//            TODO WTF is this shit
+//            dateFormatter.format(formatter.parse(createdAt))
         )
 
         override fun downloads(postNameFmt: String) = fileUrl?.let {
@@ -80,5 +116,9 @@ data class GelbooruPostResponse(
         }
 
         override fun message(): Nothing? = null
+    }
+
+    companion object {
+        private val formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy")
     }
 }

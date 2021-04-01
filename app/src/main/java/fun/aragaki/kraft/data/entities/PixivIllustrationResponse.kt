@@ -1,10 +1,12 @@
 package `fun`.aragaki.kraft.data.entities
 
+import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
+import `fun`.aragaki.kraft.ext.dateFormatter
 import `fun`.aragaki.kraft.ext.extension
 import `fun`.aragaki.kraft.ext.joinNoNull
-import `fun`.aragaki.kraft.data.entities.User as PreviewUser
+import java.text.SimpleDateFormat
 
 data class PixivIllustrationResponse(
     val illust: PixivIllustration?
@@ -54,10 +56,31 @@ data class PixivIllustrationResponse(
             val urls =
                 if (meta_pages?.isNotEmpty() == true) meta_pages.map { it?.image_urls?.large!! }
                 else listOf(image_urls?.large)
-            val uploader =
-                user?.id?.let { id -> PreviewUser(id, user.name, user.profile_image_urls?.medium) }
-            return Preview(urls, pWrapper.dependencyTag, uploader, getTags(), create_date)
+            return Preview(urls, pWrapper.dependencyTag, info(), getTags())
         }
+
+        override fun info() = Info(
+            id,
+            { user?.name },
+            { user?.profile_image_urls?.medium },
+            user?.is_followed,
+            title,
+            true to caption,
+            false to total_view.toString(),
+            false to total_bookmarks.toString(),
+            true to null,
+            true to null,
+            {
+                buildString {
+                    height?.let { h ->
+                        width?.let { w ->
+                            append(it(R.string.fmt_post_info_size).format(h, w))
+                            append("\n\n")
+                        }
+                    }
+                }
+            }, dateFormatter.format(formatter.parse(create_date))
+        )
 
         override fun downloads(postNameFmt: String) =
             meta_pages?.mapIndexed { index, it ->
@@ -121,5 +144,9 @@ data class PixivIllustrationResponse(
                 val medium: String?
             )
         }
+    }
+
+    companion object {
+        private val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sssZ")
     }
 }

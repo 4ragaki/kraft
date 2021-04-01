@@ -28,9 +28,9 @@ class Settings(private val context: Context, private val preferences: SharedPref
     val safebooruUsername = StringValue(R.string.pref_key_cre_safebooru_username)
     val safebooruHash = StringValue(R.string.pref_key_cre_safebooru_hash)
 
-    fun edit(block: (SharedPreferences.Editor) -> Unit) {
+    fun edit(block: SharedPreferences.Editor.() -> Unit) {
         preferences.edit().apply {
-            block(this)
+            apply(block)
             apply()
         }
     }

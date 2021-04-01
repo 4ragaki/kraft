@@ -51,7 +51,9 @@ class PostActivity : BaseSwipeBackActivity() {
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         binding.apply {
-            btnInfo.setOnClickListener {}
+            btnInfo.setOnClickListener {
+                findNavController(R.id.postHostFragment).navigate(R.id.nav_post_info)
+            }
             btnTags.setOnClickListener {
                 findNavController(R.id.postHostFragment).navigate(R.id.nav_post_tag)
             }

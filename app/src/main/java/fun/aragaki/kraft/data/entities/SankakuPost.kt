@@ -1,7 +1,9 @@
 package `fun`.aragaki.kraft.data.entities
 
+import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
+import `fun`.aragaki.kraft.ext.dateFormatter
 import `fun`.aragaki.kraft.ext.extension
 import `fun`.aragaki.kraft.ext.joinNoNull
 import android.net.Uri
@@ -12,7 +14,7 @@ data class SankakuPost(
     val comment_count: Any?,
     val created_at: CreatedAt?,
     val fav_count: Int?,
-    val file_size: Int?,
+    val file_size: Long?,
     val file_type: String?,
     val file_url: String?,
     val has_children: Boolean?,
@@ -55,8 +57,52 @@ data class SankakuPost(
     override fun postPreview() = preview_url
 
     override fun preview() = Preview(
-        listOf(sample_url), pWrapper.dependencyTag,
-        null, getTags(), created_at?.n
+        listOf(sample_url),
+        pWrapper.dependencyTag, info(), getTags()
+    )
+
+    override fun info() = Info(
+        author?.id,
+        { author?.name },
+        { author?.avatar },
+        null,
+        pTitle,
+        null,
+        true to null,
+        false to fav_count.toString(),
+        false to vote_count.toString(),
+        false to rating,
+        {
+            buildString {
+                height?.let { h ->
+                    width?.let { w ->
+                        append(it(R.string.fmt_post_info_size).format(h, w))
+                        append("\n\n")
+                    }
+                }
+                md5?.let {
+                    append(it(R.string.fmt_post_info_md5).format(it))
+                    append("\n\n")
+                }
+                file_size?.let {
+                    append(it(R.string.fmt_post_info_file_size).format(it))
+                    append("\n\n")
+                }
+                file_url?.let {
+                    append(it(R.string.fmt_post_info_file_url).format(it))
+                    append("\n\n")
+                }
+                parent_id?.let {
+                    append(it(R.string.fmt_post_info_parent).format(it))
+                    append("\n\n")
+                }
+                source?.let {
+                    append(it(R.string.fmt_post_info_source).format(it))
+                    append("\n\n")
+                }
+            }
+        },
+        dateFormatter.format(created_at?.s?.times(1000))
     )
 
     override fun downloads(postNameFmt: String) = file_url?.let {
@@ -113,14 +159,14 @@ data class SankakuPost(
     data class Author(
         val avatar: String?,
         val avatar_rating: String?,
-        val id: Int?,
+        val id: Long?,
         val name: String?
     )
 
     data class CreatedAt(
         val json_class: String?,
         val n: String?,
-        val s: String?
+        val s: Long?
     )
 
     data class Tag(

@@ -1,8 +1,11 @@
 package `fun`.aragaki.kraft.data.entities
 
+import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
+import `fun`.aragaki.kraft.ext.dateFormatter
 import `fun`.aragaki.kraft.ext.splitByBlank
+import java.text.SimpleDateFormat
 
 data class DanbooruPost(
     val approver_id: Int?,
@@ -12,7 +15,7 @@ data class DanbooruPost(
     val down_score: Int?,
     val fav_count: Int?,
     val file_ext: String,
-    val file_size: Int?,
+    val file_size: Long?,
     val file_url: String?,
     val has_active_children: Boolean?,
     val has_children: Boolean?,
@@ -56,7 +59,7 @@ data class DanbooruPost(
     val tag_string_meta: String?,
     val up_score: Int?,
     val updated_at: String?,
-    val uploader_id: Int?,
+    val uploader_id: Long?,
     val uploader_name: String?
 ) : Post() {
     override lateinit var pWrapper: BooruWrapper
@@ -71,13 +74,66 @@ data class DanbooruPost(
     override fun postPreview() = preview_file_url
 
     override fun preview() = Preview(
-        listOf(large_file_url), pWrapper.dependencyTag, null, mapOf(
+        listOf(large_file_url), pWrapper.dependencyTag, info(),
+        mapOf(
             TagType.Artist.key to tag_string_artist?.splitByBlank(),
             TagType.Character.key to tag_string_character?.splitByBlank(),
             TagType.Copyright.key to tag_string_copyright?.splitByBlank(),
             TagType.General.key to tag_string_general?.splitByBlank(),
             TagType.Meta.key to tag_string_meta?.splitByBlank()
-        ), created_at
+        )
+    )
+
+    override fun info() = Info(
+        uploader_id,
+        { uploader_name },
+        { null },
+        null,
+        pTitle,
+        null,
+        true to null,
+        false to fav_count.toString(),
+        false to score.toString(),
+        false to rating,
+        {
+            buildString {
+                image_height?.let { h ->
+                    image_width?.let { w ->
+                        append(it(R.string.fmt_post_info_size).format(h, w))
+                        append("\n\n")
+                    }
+                }
+                file_ext.let {
+                    append(it(R.string.fmt_post_info_ext).format(it))
+                    append("\n\n")
+                }
+                md5?.let {
+                    append(it(R.string.fmt_post_info_md5).format(it))
+                    append("\n\n")
+                }
+                file_size?.let {
+                    append(it(R.string.fmt_post_info_file_size).format(it))
+                    append("\n\n")
+                }
+                file_url?.let {
+                    append(it(R.string.fmt_post_info_file_url).format(it))
+                    append("\n\n")
+                }
+                children_ids?.let {
+                    append(it(R.string.fmt_post_info_children).format(it))
+                    append("\n\n")
+                }
+                parent_id?.let {
+                    append(it(R.string.fmt_post_info_parent).format(it))
+                    append("\n\n")
+                }
+                source?.let {
+                    append(it(R.string.fmt_post_info_source).format(it))
+                    append("\n\n")
+                }
+            }
+        },
+        dateFormatter.format(formatter.parse(created_at))
     )
 
     override fun downloads(postNameFmt: String) =
@@ -91,4 +147,8 @@ data class DanbooruPost(
         }
 
     override fun message(): Nothing? = null
+
+    companion object {
+        private val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    }
 }

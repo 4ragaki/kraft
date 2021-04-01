@@ -119,8 +119,8 @@ val boorusModule = DI.Module("boorusModule") {
                 "https", "app-api.pixiv.net", settings.pixivAccessToken.value,
                 settings.pixivRefreshToken.value, { accessToken, refreshToken ->
                     settings.edit {
-                        it.putString(settings.pixivAccessToken.key, accessToken)
-                        it.putString(settings.pixivRefreshToken.key, refreshToken)
+                        putString(settings.pixivAccessToken.key, accessToken)
+                        putString(settings.pixivRefreshToken.key, refreshToken)
                     }
                 })
         )

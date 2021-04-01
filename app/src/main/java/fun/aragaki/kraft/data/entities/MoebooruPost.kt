@@ -1,7 +1,9 @@
 package `fun`.aragaki.kraft.data.entities
 
+import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
+import `fun`.aragaki.kraft.ext.dateFormatter
 import `fun`.aragaki.kraft.ext.extension
 import `fun`.aragaki.kraft.ext.splitByBlank
 
@@ -11,11 +13,11 @@ data class MoebooruPost(
     val approver_id: Any?,
     val author: String?,
     val change: Int?,
-    val created_at: String?,
-    val creator_id: Int?,
+    val created_at: Long?,
+    val creator_id: Long?,
 //    null on konachan.com
     val file_ext: String?,
-    val file_size: Int?,
+    val file_size: Long?,
     val file_url: String?,
     val flag_detail: FlagDetail?,
     val frames: List<Any>?,
@@ -71,8 +73,56 @@ data class MoebooruPost(
     override fun postPreview() = preview_url
 
     override fun preview() = Preview(
-        listOf(sample_url), pWrapper.dependencyTag, null,
-        mapOf(TagType.Undefined.key to tags.splitByBlank()), created_at
+        listOf(sample_url), pWrapper.dependencyTag,
+        info(), mapOf(TagType.Undefined.key to tags.splitByBlank())
+    )
+
+    override fun info() = Info(
+        creator_id,
+        { author },
+        { null },
+        null,
+        pTitle,
+        null,
+        true to null,
+        true to null,
+        false to score.toString(),
+        false to rating,
+        {
+            buildString {
+                height?.let { h ->
+                    width?.let { w ->
+                        append(it(R.string.fmt_post_info_size).format(h, w))
+                        append("\n\n")
+                    }
+                }
+                file_ext?.let {
+                    append(it(R.string.fmt_post_info_ext).format(it))
+                    append("\n\n")
+                }
+                md5?.let {
+                    append(it(R.string.fmt_post_info_md5).format(it))
+                    append("\n\n")
+                }
+                file_size?.let {
+                    append(it(R.string.fmt_post_info_file_size).format(it))
+                    append("\n\n")
+                }
+                file_url?.let {
+                    append(it(R.string.fmt_post_info_file_url).format(it))
+                    append("\n\n")
+                }
+                parent_id?.let {
+                    append(it(R.string.fmt_post_info_parent).format(it))
+                    append("\n\n")
+                }
+                source?.let {
+                    append(it(R.string.fmt_post_info_source).format(it))
+                    append("\n\n")
+                }
+            }
+        },
+        dateFormatter.format(created_at?.times(1000))
     )
 
     override fun downloads(postNameFmt: String) = file_url?.let {

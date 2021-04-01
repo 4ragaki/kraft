@@ -38,6 +38,7 @@
     <string name="pref_title_cred_pixiv_refresh_token">Pixiv Refresh Token</string>
     <string name="pref_title_cred_saucenao_apikey">SauceNao ApiKey</string>
     <string name="action_jump_to">take me there</string>
+    <string name="string_jump_to_empty">Empty Intent.</string>
     <string name="title_yandere_username">Yande.re Username</string>
     <string name="title_yandere_hash">Yande.re Hash</string>
     <string name="title_danbooru_username">Danbooru Username</string>

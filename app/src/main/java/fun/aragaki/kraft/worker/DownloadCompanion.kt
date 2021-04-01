@@ -1,7 +1,7 @@
 package `fun`.aragaki.kraft.worker
 
 import `fun`.aragaki.kraft.R
-import `fun`.aragaki.kraft.data.entities.Download
+import `fun`.aragaki.kraft.data.entities.Post
 import `fun`.aragaki.kraft.receivers.DownloadReceiver
 import android.app.Notification
 import android.app.NotificationChannel
@@ -21,7 +21,7 @@ object DownloadCompanion {
     private var AVAILABLE_REQUEST_CODE = 0
     const val DOWNLOADS_TAG = "downloads"
 
-    fun download(context: Context, download: Download) {
+    fun download(context: Context, download: Post.Download) {
         val data = Data.Builder()
             .putString(DownloadParams.url, download.url)
             .apply {
