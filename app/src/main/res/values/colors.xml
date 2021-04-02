@@ -10,13 +10,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="green_22_a400">#2200E676</color>
-    <color name="pink_22_a400">#22F50057</color>
-    <color name="orange_22_a400">#22FF9100</color>
-    <color name="blue_gray_22_a500">#22607D8B</color>
-    <color name="purple_22_a400">#22D500F9</color>
-    <color name="cyan_22_a400">#2200E5FF</color>
-    <color name="red_22_a400">#22FF1744</color>
-    <color name="deep_orange_22_a400">#22FF3D00</color>
+    <color name="green_a400">#FF00E676</color>
+    <color name="pink_a400">#FFF50057</color>
+    <color name="orange_a400">#FFFF9100</color>
+    <color name="purple_a400">#FFD500F9</color>
+    <color name="cyan_a400">#FF00E5FF</color>
+    <color name="red_a400">#FFFF1744</color>
+    <color name="deep_orange_a400">#FFFF3D00</color>
+
     <color name="gray_22_a500">#229E9E9E</color>
 </resources>

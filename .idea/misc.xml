@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/drawable/illu_post_load_error.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/illu_post_url_empty.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/ripple_primary.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/shape_roundrect_outline.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/activity_jump.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.2722222222222222" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.45" />
@@ -29,8 +30,10 @@
         <entry key="app/src/main/res/layout/fragment_post_info.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_post_tag.xml" value="0.29259259259259257" />
         <entry key="app/src/main/res/layout/fragment_webview.xml" value="0.1814814814814815" />
+        <entry key="app/src/main/res/layout/item_tag.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/xml/preferences_credentials.xml" value="0.19166666666666668" />
       </map>
     </option>

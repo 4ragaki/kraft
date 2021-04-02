@@ -30,4 +30,4 @@ fun String.findUrls() = Regex("""(http|https)://\S+""").findAll(this).map { it.v
 fun String.urlEncode() = URLEncoder.encode(this, "utf-8")
 fun String.urlDecode() = URLDecoder.decode(this, "utf-8")
 
-val dateFormatter: DateFormat = SimpleDateFormat.getDateInstance()
+val dateFormatter: DateFormat = SimpleDateFormat.getDateTimeInstance()
