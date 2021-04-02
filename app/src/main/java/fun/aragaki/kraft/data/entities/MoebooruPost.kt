@@ -6,6 +6,7 @@ import `fun`.aragaki.kraft.data.servicewrappers.TagType
 import `fun`.aragaki.kraft.ext.dateFormatter
 import `fun`.aragaki.kraft.ext.extension
 import `fun`.aragaki.kraft.ext.splitByBlank
+import android.text.format.Formatter
 
 data class MoebooruPost(
     val actual_preview_height: Int?,
@@ -83,41 +84,44 @@ data class MoebooruPost(
         { null },
         null,
         pTitle,
-        null,
+        Triple(true, null, null),
         true to null,
         true to null,
         false to score.toString(),
         false to rating,
-        {
+        { c ->
             buildString {
                 height?.let { h ->
                     width?.let { w ->
-                        append(it(R.string.fmt_post_info_size).format(h, w))
+                        append(c.getString(R.string.fmt_post_info_size).format(h, w))
                         append("\n\n")
                     }
                 }
                 file_ext?.let {
-                    append(it(R.string.fmt_post_info_ext).format(it))
+                    append(c.getString(R.string.fmt_post_info_ext).format(it))
                     append("\n\n")
                 }
                 md5?.let {
-                    append(it(R.string.fmt_post_info_md5).format(it))
+                    append(c.getString(R.string.fmt_post_info_md5).format(it))
                     append("\n\n")
                 }
                 file_size?.let {
-                    append(it(R.string.fmt_post_info_file_size).format(it))
+                    append(
+                        c.getString(R.string.fmt_post_info_file_size)
+                            .format(Formatter.formatFileSize(c, it))
+                    )
                     append("\n\n")
                 }
                 file_url?.let {
-                    append(it(R.string.fmt_post_info_file_url).format(it))
+                    append(c.getString(R.string.fmt_post_info_file_url).format(it))
                     append("\n\n")
                 }
                 parent_id?.let {
-                    append(it(R.string.fmt_post_info_parent).format(it))
+                    append(c.getString(R.string.fmt_post_info_parent).format(it))
                     append("\n\n")
                 }
                 source?.let {
-                    append(it(R.string.fmt_post_info_source).format(it))
+                    append(c.getString(R.string.fmt_post_info_source).format(it))
                     append("\n\n")
                 }
             }

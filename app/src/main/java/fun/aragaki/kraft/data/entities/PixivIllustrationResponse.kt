@@ -65,16 +65,16 @@ data class PixivIllustrationResponse(
             { user?.profile_image_urls?.medium },
             user?.is_followed,
             title,
-            true to caption,
+            Triple(false, second = true, third = caption),
             false to total_view.toString(),
             false to total_bookmarks.toString(),
             true to null,
             true to null,
-            {
+            { c ->
                 buildString {
                     height?.let { h ->
                         width?.let { w ->
-                            append(it(R.string.fmt_post_info_size).format(h, w))
+                            append(c.getString(R.string.fmt_post_info_size).format(h, w))
                             append("\n\n")
                         }
                     }

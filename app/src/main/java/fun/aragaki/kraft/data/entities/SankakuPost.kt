@@ -7,6 +7,7 @@ import `fun`.aragaki.kraft.ext.dateFormatter
 import `fun`.aragaki.kraft.ext.extension
 import `fun`.aragaki.kraft.ext.joinNoNull
 import android.net.Uri
+import android.text.format.Formatter
 
 data class SankakuPost(
     val author: Author?,
@@ -67,37 +68,40 @@ data class SankakuPost(
         { author?.avatar },
         null,
         pTitle,
-        null,
+        Triple(true, null, null),
         true to null,
         false to fav_count.toString(),
         false to vote_count.toString(),
         false to rating,
-        {
+        { c ->
             buildString {
                 height?.let { h ->
                     width?.let { w ->
-                        append(it(R.string.fmt_post_info_size).format(h, w))
+                        append(c.getString(R.string.fmt_post_info_size).format(h, w))
                         append("\n\n")
                     }
                 }
                 md5?.let {
-                    append(it(R.string.fmt_post_info_md5).format(it))
+                    append(c.getString(R.string.fmt_post_info_md5).format(it))
                     append("\n\n")
                 }
                 file_size?.let {
-                    append(it(R.string.fmt_post_info_file_size).format(it))
+                    append(
+                        c.getString(R.string.fmt_post_info_file_size)
+                            .format(Formatter.formatFileSize(c, it))
+                    )
                     append("\n\n")
                 }
                 file_url?.let {
-                    append(it(R.string.fmt_post_info_file_url).format(it))
+                    append(c.getString(R.string.fmt_post_info_file_url).format(it))
                     append("\n\n")
                 }
                 parent_id?.let {
-                    append(it(R.string.fmt_post_info_parent).format(it))
+                    append(c.getString(R.string.fmt_post_info_parent).format(it))
                     append("\n\n")
                 }
                 source?.let {
-                    append(it(R.string.fmt_post_info_source).format(it))
+                    append(c.getString(R.string.fmt_post_info_source).format(it))
                     append("\n\n")
                 }
             }

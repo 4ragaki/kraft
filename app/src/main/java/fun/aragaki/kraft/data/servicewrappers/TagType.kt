@@ -10,5 +10,5 @@ enum class TagType(val key: String, val sankakuType: Int) {
     Medium("tag-type-medium", 8),
     Meta("tag-type-meta", 9),
 
-    Undefined("undefied", -1)
+    Undefined("undefined", -1)
 }

@@ -2,6 +2,7 @@ package `fun`.aragaki.kraft.data.entities
 
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.worker.Downloader
+import android.content.Context
 
 abstract class Post {
     abstract var pWrapper: BooruWrapper
@@ -51,14 +52,14 @@ abstract class Post {
         val uploaderAvatar: suspend () -> String?,
         val isFollowed: Boolean?,
         val title: String?,
-//    spannable,content
-        val caption: Pair<Boolean, String?>?,
+//    gone,spannable,content
+        val caption: Triple<Boolean, Boolean?, String?>,
 //    gone,content
         val shows: Pair<Boolean, String?>,
         val likes: Pair<Boolean, String?>,
         val scores: Pair<Boolean, String?>,
         val rating: Pair<Boolean, String?>,
-        val info: (strGetter: (id: Int) -> String) -> String,
+        val info: (Context) -> String,
         val date: String?
     )
 

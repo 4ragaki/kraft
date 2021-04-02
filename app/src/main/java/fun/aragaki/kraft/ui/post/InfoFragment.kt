@@ -49,15 +49,13 @@ class InfoFragment : BottomSheetDialogFragment(), DIAware {
                         tvUser.text = name
                     }
                     btnFollow.load(if (info.isFollowed == true) R.drawable.ic_post_user_unfollow else R.drawable.ic_post_user_follow)
-                    info.caption?.let { caption ->
-                        tvCaption.text =
-                            if (caption.first) Html.fromHtml(caption.second) else caption.second
-                    }
+
+                    tvCaption.show(info.caption)
                     tvShows.show(info.shows)
                     tvLikes.show(info.likes)
                     tvScores.show(info.scores)
                     tvRating.show(info.rating)
-                    tvInfo.text = info.info { id -> getString(id) }
+                    tvInfo.text = info.info(requireContext())
                     tvDate.text = info.date
                 }
             }
@@ -67,5 +65,10 @@ class InfoFragment : BottomSheetDialogFragment(), DIAware {
     private fun TextView.show(data: Pair<Boolean, String?>) {
         isGone = data.first
         text = data.second
+    }
+
+    private fun TextView.show(data: Triple<Boolean, Boolean?, String?>) {
+        isGone = data.first
+        text = if (data.second == true) Html.fromHtml(data.third) else data.third
     }
 }

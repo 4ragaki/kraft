@@ -138,9 +138,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:autoLink="web"
+                android:textIsSelectable="true"
                 app:layout_constraintTop_toBottomOf="@id/barrier"
-                tools:text="size : 3840 * 2160\n\next : png\n\nmd5 : 1234567890\n\nfile_size : 1234567\n\nfile : https://yande.re/post/show/687592\n\nchildren : https://yande.re/post/show/687592\n\nparent : https://yande.re/post/show/687592\n\nsource : https://yande.re/post/show/687592" />
-
+                tools:text="size : 3840 * 2160\n\next : apk\n\nmd5 : 0xCAFEBABE\n\nfile_size : 4 MB\n\nfile : https://files.yande.re/image/4511a32f61a6051b7a373ccd4c1d7378/yande.re%20687592%20dress%20hiten%20penguin.png\n\nchildren : https://aragaki.fun\n\nparent : https://aragaki.fun\n\nsource : https://yande.re/post/show/687592\n\n" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_date"

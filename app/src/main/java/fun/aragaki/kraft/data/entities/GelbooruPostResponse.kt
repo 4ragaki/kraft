@@ -78,25 +78,25 @@ data class GelbooruPostResponse(
             { null },
             null,
             pTitle,
-            null,
+            Triple(true, null, null),
             true to null,
             true to null,
             false to score.toString(),
             false to rating,
-            {
+            { c ->
                 buildString {
                     height.let { h ->
                         width.let { w ->
-                            append(it(R.string.fmt_post_info_size).format(h, w))
+                            append(c.getString(R.string.fmt_post_info_size).format(h, w))
                             append("\n\n")
                         }
                     }
                     fileUrl?.let {
-                        append(it(R.string.fmt_post_info_file_url).format(it))
+                        append(c.getString(R.string.fmt_post_info_file_url).format(it))
                         append("\n\n")
                     }
                     source.let {
-                        append(it(R.string.fmt_post_info_source).format(source))
+                        append(c.getString(R.string.fmt_post_info_source).format(source))
                         append("\n\n")
                     }
                 }
