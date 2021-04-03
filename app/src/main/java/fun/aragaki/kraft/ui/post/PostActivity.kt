@@ -4,10 +4,7 @@ import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.data.UnsupportedException
 import `fun`.aragaki.kraft.databinding.ActivityPostBinding
-import `fun`.aragaki.kraft.ext.findUrls
-import `fun`.aragaki.kraft.ext.snack
-import `fun`.aragaki.kraft.ext.startActivity
-import `fun`.aragaki.kraft.ext.toast
+import `fun`.aragaki.kraft.ext.*
 import `fun`.aragaki.kraft.ui.JumpActivity
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import `fun`.aragaki.kraft.ui.base.BaseSwipeBackActivity
@@ -26,6 +23,7 @@ import org.kodein.di.DI
 import org.kodein.di.android.retainedDI
 import org.kodein.di.bind
 import org.kodein.di.singleton
+import retrofit2.HttpException
 
 
 class PostActivity : BaseSwipeBackActivity() {
@@ -95,27 +93,41 @@ class PostActivity : BaseSwipeBackActivity() {
             Uri.parse(intent.getStringExtra(Intent.EXTRA_TEXT)?.findUrls()?.first())
         else intent.data!!
 
-        viewModel.handle(uri, { resumeCallback = null }) {
+        viewModel.handle(uri, {
+            resumeCallback = null
+            binding.anim.isVisible = false
+        }) {
             when (it) {
                 is CredentialException -> {
-                    binding.root.snack(it.message, getString(R.string.action_jump_to)) {
-                        resumeCallback = { launch(intent) }
-                        startActivity<JumpActivity> {
-                            putExtra(
-                                JumpActivity.EXTRA_DESTINATION, R.id.nav_dest_credentials
-                            )
+                    binding.apply {
+                        anim.play(R.raw.empty_list)
+                        root.snack(it.message, getString(R.string.action_jump_to)) {
+                            resumeCallback = {
+                                launch(intent)
+                                binding.anim.play(R.raw.preloader)
+                            }
+                            startActivity<JumpActivity> {
+                                putExtra(
+                                    JumpActivity.EXTRA_DESTINATION, R.id.nav_dest_credentials
+                                )
+                            }
                         }
                     }
                 }
                 is UnsupportedException -> it.message?.let { msg ->
                     supportActionBar?.title = msg
-                    binding.animation.isVisible = true
-                    binding.root.snack(msg)
+                    binding.anim.play(R.raw.empty_list)
+                }
+                is HttpException -> if (it.code() == 404) {
+                    supportActionBar?.title = it.message
+                    binding.anim.play(R.raw.page_not_found)
                 }
                 else -> {
                     resumeCallback = { launch(intent) }
-                    binding.animation.isVisible = true
-                    binding.root.snack(it.message)
+                    binding.apply {
+                        anim.play(R.raw.empty_list)
+                        root.snack(it.message)
+                    }
                 }
             }
         }

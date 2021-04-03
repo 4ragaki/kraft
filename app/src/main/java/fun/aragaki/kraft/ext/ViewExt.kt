@@ -6,13 +6,16 @@ import android.animation.ValueAnimator
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.Window
+import androidx.annotation.RawRes
 import androidx.core.graphics.Insets
 import androidx.core.view.WindowInsetsCompat
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieCompositionFactory
 import com.google.android.material.snackbar.Snackbar
 
 fun View.snack(
-    str: String?, actionText: String? = null, length: Int = Snackbar.LENGTH_LONG,
+    str: String?, actionText: String? = null, length: Int = Snackbar.LENGTH_INDEFINITE,
     action: ((view: View) -> Unit)? = null
 ) = Snackbar.make(this, str ?: "", length).apply {
     action?.let { setAction(actionText, action) }
@@ -24,6 +27,13 @@ fun View.applyVerticalInsets(window: Window, callbacks: Array<(Insets) -> Unit>)
             callbacks.forEach { it(stableInsets) }
         }
         insets
+    }
+}
+
+fun LottieAnimationView.play(@RawRes id: Int) = apply {
+    LottieCompositionFactory.fromRawResSync(context, id).value?.let {
+        setComposition(it)
+        playAnimation()
     }
 }
 

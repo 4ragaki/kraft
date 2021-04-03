@@ -1,3 +1,3 @@
 package `fun`.aragaki.kraft.data
 
-object UnsupportedException : Exception("unsupported link!")
+object UnsupportedException : Exception("Unsupported link!")

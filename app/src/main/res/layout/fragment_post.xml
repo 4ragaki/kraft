@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="1"
         tools:listitem="@layout/item_post_preview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

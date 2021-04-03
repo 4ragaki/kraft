@@ -7,7 +7,7 @@
     android:layout_margin="6dp">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation"
+        android:id="@+id/anim"
         style="@android:style/Widget.Material.ProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

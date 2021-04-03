@@ -3,44 +3,30 @@ package `fun`.aragaki.kraft.ui.post
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.adapters.BaseHolder
 import `fun`.aragaki.kraft.databinding.ItemPostPreviewBinding
+import `fun`.aragaki.kraft.ext.play
 import androidx.core.view.isVisible
 import coil.ImageLoader
 import coil.api.load
-import com.airbnb.lottie.LottieDrawable
 
 class PostPreviewHolder(binding: ItemPostPreviewBinding) :
     BaseHolder<ItemPostPreviewBinding>(binding) {
 
     fun bind(url: String?, loader: ImageLoader) {
-        if (url.isNullOrBlank()) {
-            binding.animation.apply {
-                repeatCount = 1
-                setAnimation(R.raw._404_animation)
-                playAnimation()
-            }
-        } else {
-            binding.ivPreview.load(url, loader) {
-                crossfade(true)
-                listener(
-                    onStart = {
-                        binding.animation.isVisible = true
-                        binding.animation.apply {
-                            repeatCount = LottieDrawable.INFINITE
-                            setAnimation(R.raw.ripple)
-                            playAnimation()
-                        }
-                    },
-                    onCancel = { binding.animation.isVisible = false },
-                    onError = { _, _ ->
-                        binding.animation.apply {
-                            repeatCount = 1
-                            setAnimation(R.raw.loading_fail)
-                            playAnimation()
-                        }
-                    },
-                    onSuccess = { _, _ -> binding.animation.isVisible = false }
-                )
-            }
+        if (url.isNullOrBlank()) binding.ivPreview.load(R.drawable.illu_post_url_empty)
+        else binding.ivPreview.load(url, loader) {
+            crossfade(true)
+            listener(
+                onStart = {
+                    binding.anim.apply {
+                        isVisible = true
+                        play(R.raw.ripple)
+                    }
+                },
+                onCancel = { binding.anim.isVisible = false },
+                onError = { _, _ -> binding.anim.isVisible = false },
+                onSuccess = { _, _ -> binding.anim.isVisible = false }
+            )
+            error(R.drawable.illu_post_load_error)
         }
     }
 

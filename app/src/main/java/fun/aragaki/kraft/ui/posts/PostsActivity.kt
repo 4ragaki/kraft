@@ -8,7 +8,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.ImageLoader
 import kotlinx.coroutines.flow.collectLatest
@@ -59,6 +61,11 @@ class PostsActivity : BaseSwipeBackActivity() {
                     lifecycleScope.launch {
                         viewModel.postsFlow(params.first, params.second)
                             .collectLatest { pagingData -> it.submitData(pagingData) }
+                    }
+                    lifecycleScope.launch {
+                        it.loadStateFlow.collectLatest {
+                            anim.isVisible = it.refresh is LoadState.Loading
+                        }
                     }
                 }
             }
