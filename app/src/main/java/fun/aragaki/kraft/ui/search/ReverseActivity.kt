@@ -4,8 +4,8 @@ import `fun`.aragaki.kraft.HOST_IQDB
 import `fun`.aragaki.kraft.HOST_SAUCENAO
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.databinding.ActivityReverseBinding
-import `fun`.aragaki.kraft.ext.applyVerticalInsets
-import `fun`.aragaki.kraft.ext.vbrClick
+import `fun`.aragaki.kraft.extensions.applyVerticalInsets
+import `fun`.aragaki.kraft.extensions.vbrClick
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import `fun`.aragaki.kraft.ui.base.BaseSwipeBackActivity
 import android.content.Intent

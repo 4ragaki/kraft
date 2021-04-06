@@ -5,7 +5,7 @@ import `fun`.aragaki.kraft.PARAMETER_POST_ID
 import `fun`.aragaki.kraft.SCHEME
 import `fun`.aragaki.kraft.Settings
 import `fun`.aragaki.kraft.data.UnsupportedException
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.worker.DownloadCompanion
 import android.net.Uri

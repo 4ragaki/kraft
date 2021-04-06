@@ -1,4 +1,4 @@
-package `fun`.aragaki.kraft.ext
+package `fun`.aragaki.kraft.extensions
 
 fun List<String?>.joinNoNull(separator: String): String {
     return buildString {

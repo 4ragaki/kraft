@@ -1,7 +1,7 @@
 package `fun`.aragaki.kraft.ui.posts
 
 import `fun`.aragaki.kraft.databinding.ActivityPostsBinding
-import `fun`.aragaki.kraft.ext.findUrls
+import `fun`.aragaki.kraft.extensions.findUrls
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import `fun`.aragaki.kraft.ui.base.BaseSwipeBackActivity
 import android.content.Intent

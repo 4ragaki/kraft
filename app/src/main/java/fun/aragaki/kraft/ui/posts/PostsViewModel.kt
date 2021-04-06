@@ -4,7 +4,7 @@ import `fun`.aragaki.kraft.Kraft
 import `fun`.aragaki.kraft.PARAMETER_POSTS_TAGS
 import `fun`.aragaki.kraft.SCHEME
 import `fun`.aragaki.kraft.data.UnsupportedException
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import android.net.Uri

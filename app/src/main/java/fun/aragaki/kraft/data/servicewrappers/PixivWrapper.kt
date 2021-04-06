@@ -8,7 +8,7 @@ import `fun`.aragaki.kraft.data.features.PixivToken
 import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.services.PixivAuth
 import `fun`.aragaki.kraft.data.services.PixivService
-import `fun`.aragaki.kraft.ext.toBearer
+import `fun`.aragaki.kraft.extensions.toBearer
 import okhttp3.OkHttpClient
 import retrofit2.HttpException
 import retrofit2.converter.gson.GsonConverterFactory

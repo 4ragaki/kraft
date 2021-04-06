@@ -1,6 +1,6 @@
 package `fun`.aragaki.kraft.ui.posts
 
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.data.features.Tags
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

@@ -1,6 +1,6 @@
 package `fun`.aragaki.kraft.ui.posts
 
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.databinding.ItemPostBinding
 import android.view.LayoutInflater
 import android.view.ViewGroup

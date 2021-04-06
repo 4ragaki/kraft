@@ -1,12 +1,7 @@
 package `fun`.aragaki.kraft.data.entities
 
-import `fun`.aragaki.kraft.R
+import `fun`.aragaki.kraft.data.extensions.*
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
-import `fun`.aragaki.kraft.data.servicewrappers.TagType
-import `fun`.aragaki.kraft.ext.dateFormatter
-import `fun`.aragaki.kraft.ext.extension
-import `fun`.aragaki.kraft.ext.splitByBlank
-import android.text.format.Formatter
 
 data class MoebooruPost(
     val actual_preview_height: Int?,
@@ -64,82 +59,11 @@ data class MoebooruPost(
 
     override lateinit var pWrapper: BooruWrapper
     override lateinit var pTitle: String
-
-    override fun attachContext(wrapper: BooruWrapper) = apply {
-        pWrapper = wrapper
-        pTitle = "${wrapper.booru.name} $id"
-    }
-
+    override fun attachContext(wrapper: BooruWrapper) = extAttachContext(wrapper)
     override fun postId() = id
     override fun postPreview() = preview_url
-
-    override fun preview() = Preview(
-        listOf(sample_url), pWrapper.dependencyTag,
-        info(), mapOf(TagType.Undefined.key to tags.splitByBlank())
-    )
-
-    override fun info() = Info(
-        creator_id,
-        { author },
-        { null },
-        null,
-        pTitle,
-        Triple(true, null, null),
-        true to null,
-        true to null,
-        false to score.toString(),
-        false to rating,
-        { c ->
-            buildString {
-                height?.let { h ->
-                    width?.let { w ->
-                        append(c.getString(R.string.fmt_post_info_size).format(h, w))
-                        append("\n\n")
-                    }
-                }
-                file_ext?.let {
-                    append(c.getString(R.string.fmt_post_info_ext).format(it))
-                    append("\n\n")
-                }
-                md5?.let {
-                    append(c.getString(R.string.fmt_post_info_md5).format(it))
-                    append("\n\n")
-                }
-                file_size?.let {
-                    append(
-                        c.getString(R.string.fmt_post_info_file_size)
-                            .format(Formatter.formatFileSize(c, it))
-                    )
-                    append("\n\n")
-                }
-                file_url?.let {
-                    append(c.getString(R.string.fmt_post_info_file_url).format(it))
-                    append("\n\n")
-                }
-                parent_id?.let {
-                    append(c.getString(R.string.fmt_post_info_parent).format(it))
-                    append("\n\n")
-                }
-                source?.let {
-                    append(c.getString(R.string.fmt_post_info_source).format(it))
-                    append("\n\n")
-                }
-            }
-        },
-        dateFormatter.format(created_at?.times(1000))
-    )
-
-    override fun downloads(postNameFmt: String) = file_url?.let {
-        listOf(
-            Download(
-                it, pWrapper.booru.folder, pWrapper.dependencyTag,
-                assignAttributes(
-                    postNameFmt, pWrapper.booru.name, id,
-                    file_ext ?: file_url.extension, tags
-                )
-            )
-        )
-    }
-
+    override fun preview() = extPreview()
+    override fun info() = extInfo()
+    override fun downloads(postNameFmt: String) = extDownloads(postNameFmt)
     override fun message() = flag_detail?.reason
 }

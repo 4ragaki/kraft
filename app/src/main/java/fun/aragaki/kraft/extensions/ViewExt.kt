@@ -1,4 +1,4 @@
-package `fun`.aragaki.kraft.ext
+package `fun`.aragaki.kraft.extensions
 
 import `fun`.aragaki.kraft.views.CircularReveal
 import android.animation.ArgbEvaluator

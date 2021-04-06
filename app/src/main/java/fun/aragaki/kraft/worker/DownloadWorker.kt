@@ -2,7 +2,7 @@ package `fun`.aragaki.kraft.worker
 
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.Settings
-import `fun`.aragaki.kraft.ext.getDocumentTree
+import `fun`.aragaki.kraft.extensions.getDocumentTree
 import android.content.Context
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.Data

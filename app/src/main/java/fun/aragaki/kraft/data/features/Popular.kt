@@ -1,6 +1,6 @@
 package `fun`.aragaki.kraft.data.features
 
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 
 @FunctionalInterface
 interface Popular {

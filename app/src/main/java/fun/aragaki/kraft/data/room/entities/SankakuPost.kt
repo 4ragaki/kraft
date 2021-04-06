@@ -1,5 +1,6 @@
 package `fun`.aragaki.kraft.data.room.entities
 
+import `fun`.aragaki.kraft.data.extensions.getTags
 import `fun`.aragaki.kraft.data.room.PostConverters
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
 import androidx.room.Entity

@@ -1,6 +1,6 @@
 package `fun`.aragaki.kraft.data.okhttp
 
-import `fun`.aragaki.kraft.ext.hash
+import `fun`.aragaki.kraft.extensions.hash
 import java.text.SimpleDateFormat
 import java.util.*
 

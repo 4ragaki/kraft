@@ -2,9 +2,9 @@ package `fun`.aragaki.kraft.ui.post
 
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.SHARE_IMAGEVIEW
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.databinding.ItemPostPreviewBinding
-import `fun`.aragaki.kraft.ext.vbrLongClick
+import `fun`.aragaki.kraft.extensions.vbrLongClick
 import android.content.Intent
 import android.os.Vibrator
 import android.view.LayoutInflater

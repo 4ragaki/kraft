@@ -1,4 +1,4 @@
-package `fun`.aragaki.kraft.ext
+package `fun`.aragaki.kraft.extensions
 
 import android.os.Build
 import android.os.VibrationEffect

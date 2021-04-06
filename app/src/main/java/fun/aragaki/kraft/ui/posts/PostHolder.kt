@@ -3,9 +3,9 @@ package `fun`.aragaki.kraft.ui.posts
 import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.SCHEME
 import `fun`.aragaki.kraft.adapters.BaseHolder
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.databinding.ItemPostBinding
-import `fun`.aragaki.kraft.ext.startActivity
+import `fun`.aragaki.kraft.extensions.startActivity
 import `fun`.aragaki.kraft.ui.post.PostActivity
 import android.net.Uri
 import coil.ImageLoader

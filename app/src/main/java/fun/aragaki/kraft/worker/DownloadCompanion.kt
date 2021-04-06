@@ -1,7 +1,7 @@
 package `fun`.aragaki.kraft.worker
 
 import `fun`.aragaki.kraft.R
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.receivers.DownloadReceiver
 import android.app.Notification
 import android.app.NotificationChannel

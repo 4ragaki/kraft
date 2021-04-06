@@ -6,9 +6,9 @@ import `fun`.aragaki.kraft.adapters.QuickAdapter
 import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.databinding.FragmentSaucenaoBinding
 import `fun`.aragaki.kraft.databinding.ItemSaucenaoBinding
-import `fun`.aragaki.kraft.ext.resolveColor
-import `fun`.aragaki.kraft.ext.snack
-import `fun`.aragaki.kraft.ext.startActivity
+import `fun`.aragaki.kraft.extensions.resolveColor
+import `fun`.aragaki.kraft.extensions.snack
+import `fun`.aragaki.kraft.extensions.startActivity
 import `fun`.aragaki.kraft.ui.JumpActivity
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import android.content.Intent

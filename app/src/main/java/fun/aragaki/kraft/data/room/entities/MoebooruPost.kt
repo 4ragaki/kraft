@@ -1,7 +1,7 @@
 package `fun`.aragaki.kraft.data.room.entities
 
 import `fun`.aragaki.kraft.data.room.PostConverters
-import `fun`.aragaki.kraft.ext.splitByBlank
+import `fun`.aragaki.kraft.extensions.splitByBlank
 import androidx.room.Entity
 import androidx.room.TypeConverters
 import java.util.*

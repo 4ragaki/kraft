@@ -3,7 +3,7 @@ package `fun`.aragaki.kraft.ui.search
 import `fun`.aragaki.kraft.*
 import `fun`.aragaki.kraft.data.services.IQDBService
 import `fun`.aragaki.kraft.databinding.FragmentWebviewBinding
-import `fun`.aragaki.kraft.ext.resolveColor
+import `fun`.aragaki.kraft.extensions.resolveColor
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import android.annotation.SuppressLint
 import android.content.Intent

@@ -1,4 +1,4 @@
-package `fun`.aragaki.kraft.data.entities
+package `fun`.aragaki.kraft.data.extensions
 
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.worker.Downloader
@@ -52,7 +52,7 @@ abstract class Post {
         val uploaderAvatar: suspend () -> String?,
         val isFollowed: Boolean?,
         val title: String?,
-//    gone,spannable,content
+//    gone,spanned,content
         val caption: Triple<Boolean, Boolean?, String?>,
 //    gone,content
         val shows: Pair<Boolean, String?>,

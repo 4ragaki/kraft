@@ -5,7 +5,7 @@ import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.SCHEME
 import `fun`.aragaki.kraft.data.servicewrappers.TagType
 import `fun`.aragaki.kraft.databinding.FragmentPostTagBinding
-import `fun`.aragaki.kraft.ext.view
+import `fun`.aragaki.kraft.extensions.view
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import android.os.Bundle
 import android.view.LayoutInflater

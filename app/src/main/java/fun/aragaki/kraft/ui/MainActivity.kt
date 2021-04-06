@@ -4,10 +4,10 @@ import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.Settings
 import `fun`.aragaki.kraft.databinding.ActivityMainBinding
 import `fun`.aragaki.kraft.databinding.FragmentMainBinding
-import `fun`.aragaki.kraft.ext.findUrls
-import `fun`.aragaki.kraft.ext.getDocumentTree
-import `fun`.aragaki.kraft.ext.registerRequestDocumentTree
-import `fun`.aragaki.kraft.ext.toast
+import `fun`.aragaki.kraft.extensions.findUrls
+import `fun`.aragaki.kraft.extensions.getDocumentTree
+import `fun`.aragaki.kraft.extensions.registerRequestDocumentTree
+import `fun`.aragaki.kraft.extensions.toast
 import `fun`.aragaki.kraft.ui.base.BaseActivity
 import `fun`.aragaki.kraft.ui.preferences.CredentialsViewModel
 import android.content.Intent

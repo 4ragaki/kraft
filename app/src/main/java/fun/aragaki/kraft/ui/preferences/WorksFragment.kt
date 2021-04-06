@@ -4,7 +4,7 @@ import `fun`.aragaki.kraft.SHARE_IMAGEVIEW
 import `fun`.aragaki.kraft.adapters.QuickAdapter
 import `fun`.aragaki.kraft.databinding.FragmentWorksBinding
 import `fun`.aragaki.kraft.databinding.ItemWorkBinding
-import `fun`.aragaki.kraft.ext.startActivity
+import `fun`.aragaki.kraft.extensions.startActivity
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import `fun`.aragaki.kraft.ui.post.PhotoViewActivity
 import `fun`.aragaki.kraft.worker.DownloadOutput

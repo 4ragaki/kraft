@@ -4,7 +4,7 @@ import `fun`.aragaki.kraft.R
 import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.data.UnsupportedException
 import `fun`.aragaki.kraft.databinding.ActivityPostBinding
-import `fun`.aragaki.kraft.ext.*
+import `fun`.aragaki.kraft.extensions.*
 import `fun`.aragaki.kraft.ui.JumpActivity
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import `fun`.aragaki.kraft.ui.base.BaseSwipeBackActivity

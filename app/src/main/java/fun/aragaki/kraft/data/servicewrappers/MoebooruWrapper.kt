@@ -1,6 +1,6 @@
 package `fun`.aragaki.kraft.data.servicewrappers
 
-import `fun`.aragaki.kraft.data.entities.Post
+import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.data.features.Popular
 import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.services.MoebooruService

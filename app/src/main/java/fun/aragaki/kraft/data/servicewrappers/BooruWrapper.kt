@@ -1,7 +1,7 @@
 package `fun`.aragaki.kraft.data.servicewrappers
 
-import `fun`.aragaki.kraft.data.entities.Post
-import `fun`.aragaki.kraft.ext.splitByBlank
+import `fun`.aragaki.kraft.data.extensions.Post
+import `fun`.aragaki.kraft.extensions.splitByBlank
 import android.net.Uri
 import androidx.core.text.isDigitsOnly
 
