@@ -7,6 +7,7 @@ import `fun`.aragaki.kraft.Settings
 import `fun`.aragaki.kraft.data.UnsupportedException
 import `fun`.aragaki.kraft.data.extensions.Post
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
+import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper.Companion.doAs
 import `fun`.aragaki.kraft.worker.DownloadCompanion
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
@@ -15,6 +16,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.kodein.di.instance
 
 class PostViewModel(app: Kraft) : AndroidViewModel(app) {
@@ -76,6 +78,38 @@ class PostViewModel(app: Kraft) : AndroidViewModel(app) {
                     if (i in selection)
                         DownloadCompanion.download(getApplication(), download)
                 } ?: DownloadCompanion.download(getApplication(), download)
+            }
+        }
+    }
+
+    fun vote(
+        postId: Long, positive: Boolean?,
+        callback: (Boolean) -> Unit, error: (Throwable) -> Unit
+    ) {
+        post.value?.pWrapper?.let {
+            viewModelScope.launch(Dispatchers.IO) {
+                kotlin.runCatching {
+                    it.doAs<BooruWrapper.Votable> {
+                        val result = vote(positive != true, postId)
+                        withContext(Dispatchers.Main) { callback(result) }
+                    }
+                }.onFailure { error(it) }
+            }
+        }
+    }
+
+    fun follow(
+        userId: Long, positive: Boolean?,
+        callback: (Boolean) -> Unit, error: (Throwable) -> Unit
+    ) {
+        post.value?.pWrapper?.let {
+            viewModelScope.launch(Dispatchers.IO) {
+                kotlin.runCatching {
+                    it.doAs<BooruWrapper.Followable> {
+                        val result = follow(positive != true, userId)
+                        withContext(Dispatchers.Main) { callback(result) }
+                    }
+                }.onFailure { error(it) }
             }
         }
     }

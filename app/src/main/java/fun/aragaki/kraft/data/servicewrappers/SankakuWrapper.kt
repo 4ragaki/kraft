@@ -1,8 +1,6 @@
 package `fun`.aragaki.kraft.data.servicewrappers
 
 import `fun`.aragaki.kraft.data.extensions.Post
-import `fun`.aragaki.kraft.data.features.Popular
-import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.services.SankakuService
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class SankakuWrapper(
     override val booru: Boorus.Sankaku, client: OkHttpClient,
     converter: GsonConverterFactory, override val dependencyTag: String? = null
-) : BooruWrapper, Tags, Popular {
+) : BooruWrapper, BooruWrapper.Taggable, BooruWrapper.Popular {
     override val service = SankakuService(client, converter, "${booru.scheme}://${booru.host}")
 
     override suspend fun post(id: Long) =

@@ -6,7 +6,7 @@ import `fun`.aragaki.kraft.databinding.ItemPostPreviewBinding
 import `fun`.aragaki.kraft.extensions.play
 import androidx.core.view.isVisible
 import coil.ImageLoader
-import coil.api.load
+import coil.load
 
 class PostPreviewHolder(binding: ItemPostPreviewBinding) :
     BaseHolder<ItemPostPreviewBinding>(binding) {

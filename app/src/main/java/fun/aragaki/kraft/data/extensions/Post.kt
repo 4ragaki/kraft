@@ -50,7 +50,8 @@ abstract class Post {
         val uploaderId: Long?,
         val uploaderName: suspend () -> String?,
         val uploaderAvatar: suspend () -> String?,
-        val isFollowed: Boolean?,
+        var isVoted: Boolean?,
+        var isFollowed: Boolean?,
         val title: String?,
 //    gone,spanned,content
         val caption: Triple<Boolean, Boolean?, String?>,

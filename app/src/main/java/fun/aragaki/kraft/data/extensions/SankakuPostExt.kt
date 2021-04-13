@@ -24,16 +24,10 @@ fun SankakuPost.extPreview() = Post.Preview(
 
 
 fun SankakuPost.extInfo() = Post.Info(
-    author?.id,
-    { author?.name },
-    { author?.avatar },
-    null,
-    pTitle,
-    Triple(true, null, null),
-    true to null,
-    false to fav_count.toString(),
-    false to vote_count.toString(),
-    false to rating,
+    author?.id, { author?.name }, { author?.avatar }, is_favorited,
+    null, pTitle, Triple(true, null, null),
+    true to null, false to fav_count.toString(),
+    false to vote_count.toString(), false to rating,
     { c ->
         buildString {
             height?.let { h ->

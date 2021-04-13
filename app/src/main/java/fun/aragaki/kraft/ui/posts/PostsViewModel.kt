@@ -5,7 +5,6 @@ import `fun`.aragaki.kraft.PARAMETER_POSTS_TAGS
 import `fun`.aragaki.kraft.SCHEME
 import `fun`.aragaki.kraft.data.UnsupportedException
 import `fun`.aragaki.kraft.data.extensions.Post
-import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
@@ -26,7 +25,7 @@ class PostsViewModel(app: Kraft) : AndroidViewModel(app) {
     fun postsFlow(wrapper: BooruWrapper, tags: String?): Flow<PagingData<Post>> {
         _title.value = "${wrapper.booru.name} #$tags"
         return Pager(PagingConfig(pageSize = 10)) {
-            PostsDataSource(wrapper as Tags, tags)
+            PostsDataSource(wrapper as BooruWrapper.Taggable, tags)
         }.flow.cachedIn(viewModelScope)
     }
 

@@ -23,16 +23,10 @@ fun MoebooruPost.extPreview() = Post.Preview(
 
 
 fun MoebooruPost.extInfo() = Post.Info(
-    creator_id,
-    { author },
-    { null },
-    null,
-    pTitle,
-    Triple(true, null, null),
-    true to null,
-    true to null,
-    false to score.toString(),
-    false to rating,
+    creator_id, { author }, { null }, null,
+    null, pTitle, Triple(true, null, null),
+    true to null, true to null,
+    false to score.toString(), false to rating,
     { c ->
         buildString {
             height?.let { h ->

@@ -11,7 +11,6 @@ import `fun`.aragaki.kraft.data.servicewrappers.*
 import android.content.Context
 import coil.Coil
 import coil.ImageLoader
-import coil.ImageLoaderBuilder
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.OkHttpClient
@@ -57,7 +56,7 @@ val serviceModule = DI.Module("serviceModule") {
     }
 
     bind<ImageLoader>(TAG_PIXIV) with singleton {
-        ImageLoaderBuilder(instance())
+        ImageLoader.Builder(instance())
             .okHttpClient(instance<OkHttpClient>(TAG_PIXIV))
             .build()
     }

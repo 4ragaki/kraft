@@ -22,16 +22,10 @@ fun GelbooruPostResponse.GelbooruPost.extPreview() = Post.Preview(
 
 
 fun GelbooruPostResponse.GelbooruPost.extInfo() = Post.Info(
-    creatorId,
-    { null },
-    { null },
-    null,
-    pTitle,
-    Triple(true, null, null),
-    true to null,
-    true to null,
-    false to score.toString(),
-    false to rating,
+    creatorId, { null }, { null },null,
+    null, pTitle, Triple(true, null, null),
+    true to null, true to null,
+    false to score.toString(), false to rating,
     { c ->
         buildString {
             height.let { h ->

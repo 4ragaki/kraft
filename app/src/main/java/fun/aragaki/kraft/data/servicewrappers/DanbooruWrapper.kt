@@ -1,7 +1,5 @@
 package `fun`.aragaki.kraft.data.servicewrappers
 
-import `fun`.aragaki.kraft.data.features.Popular
-import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.services.DanbooruService
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,7 +9,7 @@ import java.util.*
 class DanbooruWrapper(
     override val booru: Boorus.Danbooru, client: OkHttpClient,
     converter: GsonConverterFactory, override val dependencyTag: String? = null
-) : BooruWrapper, Tags, Popular {
+) : BooruWrapper, BooruWrapper.Taggable, BooruWrapper.Popular {
 
     override val service = DanbooruService(client, converter, "${booru.scheme}://${booru.host}")
 

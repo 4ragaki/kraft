@@ -5,7 +5,7 @@ import `fun`.aragaki.kraft.ui.base.BaseActivity
 import android.os.Bundle
 import android.view.WindowManager
 import coil.ImageLoader
-import coil.api.load
+import coil.load
 import org.kodein.di.DI
 import org.kodein.di.android.retainedDI
 import org.kodein.di.instance

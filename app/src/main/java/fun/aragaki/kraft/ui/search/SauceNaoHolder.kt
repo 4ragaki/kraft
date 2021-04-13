@@ -4,7 +4,7 @@ import `fun`.aragaki.kraft.adapters.BaseHolder
 import `fun`.aragaki.kraft.data.entities.SauceNaoResponse
 import `fun`.aragaki.kraft.databinding.ItemSaucenaoBinding
 import android.annotation.SuppressLint
-import coil.api.load
+import coil.load
 
 class SauceNaoHolder(binding: ItemSaucenaoBinding) : BaseHolder<ItemSaucenaoBinding>(binding) {
     private lateinit var _result: SauceNaoResponse.Result

@@ -25,16 +25,10 @@ fun PixivIllustrationResponse.PixivIllustration.extPreview(): Post.Preview {
 
 
 fun PixivIllustrationResponse.PixivIllustration.extInfo() = Post.Info(
-    id,
-    { user?.name },
-    { user?.profile_image_urls?.medium },
-    user?.is_followed,
-    title,
-    Triple(false, second = true, third = caption),
-    false to total_view.toString(),
-    false to total_bookmarks.toString(),
-    true to null,
-    true to null,
+    user?.id, { user?.name }, { user?.profile_image_urls?.medium }, is_bookmarked,
+    user?.is_followed, title, Triple(false, second = true, third = caption),
+    false to total_view.toString(), false to total_bookmarks.toString(),
+    true to null, true to null,
     { c ->
         buildString {
             height?.let { h ->

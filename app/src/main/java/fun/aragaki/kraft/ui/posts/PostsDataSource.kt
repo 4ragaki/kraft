@@ -1,11 +1,11 @@
 package `fun`.aragaki.kraft.ui.posts
 
 import `fun`.aragaki.kraft.data.extensions.Post
-import `fun`.aragaki.kraft.data.features.Tags
+import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
-class PostsDataSource(private val backend: Tags, private val tags: String?) :
+class PostsDataSource(private val backend: BooruWrapper.Taggable, private val tags: String?) :
     PagingSource<Int, Post>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Post> {
         kotlin.runCatching {

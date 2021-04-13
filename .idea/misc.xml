@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/download_failure_actions.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/drawable/ic_post_bookmark.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/ic_post_rating.xml" value="0.3807291666666667" />
@@ -15,8 +16,11 @@
         <entry key="app/src/main/res/drawable/ic_post_user_unfollow.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/ic_show.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/ic_star.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/ic_tags.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/drawable/ic_user_follow.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/ic_user_unfollow.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/ic_vote.xml" value="0.35052083333333334" />
+        <entry key="app/src/main/res/drawable/ic_voted.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/drawable/illu_list_empty.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/illu_post_load_error.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/illu_post_url_empty.xml" value="0.31296296296296294" />

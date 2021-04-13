@@ -49,18 +49,34 @@ class PostActivity : BaseSwipeBackActivity() {
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         binding.apply {
-            btnInfo.setOnClickListener {
-                findNavController(R.id.postHostFragment).navigate(R.id.nav_post_info)
+            viewModel.post.observe(this@PostActivity) { post ->
+                btnInfo.setOnClickListener {
+                    findNavController(R.id.postHostFragment).navigate(R.id.nav_post_info)
+                }
+                btnTags.setOnClickListener {
+                    findNavController(R.id.postHostFragment).navigate(R.id.nav_post_tag)
+                }
+                btnDownload.setOnClickListener {
+                    kotlin.runCatching {
+                        viewModel.download()
+                    }.onFailure { it.message?.let { msg -> toast(msg) } }
+                }
+                btnVote.apply {
+                    val info = post.info()
+                    setImageResource(if (info.isVoted == true) R.drawable.ic_voted else R.drawable.ic_vote)
+                    setOnClickListener {
+                        viewModel.vote(post.postId(), info.isVoted,
+                            {
+                                info.isVoted = it
+                                setImageResource(if (info.isVoted == true) R.drawable.ic_voted else R.drawable.ic_vote)
+                            }
+                        ) {
+                            root.snack(it.message)
+                            it.printStackTrace()
+                        }
+                    }
+                }
             }
-            btnTags.setOnClickListener {
-                findNavController(R.id.postHostFragment).navigate(R.id.nav_post_tag)
-            }
-            btnDownload.setOnClickListener {
-                kotlin.runCatching {
-                    viewModel.download()
-                }.onFailure { it.message?.let { msg -> toast(msg) } }
-            }
-            btnVote.setOnClickListener { }
 
 
 //            val appbarPaddingTop = appbarLayout.paddingTop

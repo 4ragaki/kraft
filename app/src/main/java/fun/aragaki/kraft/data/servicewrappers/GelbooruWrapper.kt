@@ -1,6 +1,5 @@
 package `fun`.aragaki.kraft.data.servicewrappers
 
-import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.services.GelbooruService
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.OkHttpClient
@@ -8,7 +7,7 @@ import okhttp3.OkHttpClient
 class GelbooruWrapper(
     override val booru: Boorus.Gelbooru, client: OkHttpClient,
     converter: TikXmlConverterFactory, override val dependencyTag: String? = null
-) : BooruWrapper, Tags {
+) : BooruWrapper, BooruWrapper.Taggable {
     override val service = GelbooruService(client, converter, "${booru.scheme}://${booru.host}")
 
     override suspend fun post(id: Long) =

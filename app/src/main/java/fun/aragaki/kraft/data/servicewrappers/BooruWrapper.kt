@@ -28,4 +28,29 @@ interface BooruWrapper {
         }
         return null
     }
+
+    interface Feature
+    interface Taggable : Feature {
+        suspend fun tags(tags: String?, page: Int): List<Post>
+    }
+
+    interface Popular : Feature {
+        suspend fun popular(param: String): List<Post>
+    }
+
+    interface Votable : Feature {
+        suspend fun vote(positive: Boolean, postId: Long): Boolean
+    }
+
+    interface Followable : Feature {
+        suspend fun follow(positive: Boolean, userId: Long):Boolean
+    }
+
+    companion object {
+        object Unsupported : Exception("Unsupported feature.")
+
+        inline fun <reified F : Feature> BooruWrapper.doAs(business: F.() -> Unit) {
+            if (this is F) business() else throw Unsupported
+        }
+    }
 }

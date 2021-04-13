@@ -1,7 +1,9 @@
 package `fun`.aragaki.kraft.ui.post
 
 import `fun`.aragaki.kraft.R
+import `fun`.aragaki.kraft.data.servicewrappers.BooruWrapper
 import `fun`.aragaki.kraft.databinding.FragmentPostInfoBinding
+import `fun`.aragaki.kraft.extensions.snack
 import `fun`.aragaki.kraft.ui.ViewModelFactory
 import android.os.Bundle
 import android.text.Html
@@ -12,7 +14,7 @@ import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.ImageLoader
-import coil.api.load
+import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,7 +50,22 @@ class InfoFragment : BottomSheetDialogFragment(), DIAware {
                     withContext(Dispatchers.IO) { info.uploaderName() }?.let { name ->
                         tvUser.text = name
                     }
-                    btnFollow.load(if (info.isFollowed == true) R.drawable.ic_post_user_unfollow else R.drawable.ic_post_user_follow)
+                    btnFollow.apply {
+                        setImageResource(if (info.isFollowed == true) R.drawable.ic_post_user_unfollow else R.drawable.ic_post_user_follow)
+                        setOnClickListener {
+                            info.uploaderId?.let { userId ->
+                                viewModel.follow(userId, info.isFollowed,
+                                    {
+                                        info.isFollowed = it
+                                        setImageResource(if (info.isFollowed == true) R.drawable.ic_post_user_unfollow else R.drawable.ic_post_user_follow)
+                                    }
+                                ) {
+                                    root.snack(it.message)
+                                    it.printStackTrace()
+                                }
+                            } ?: root.snack(BooruWrapper.Companion.Unsupported.message)
+                        }
+                    }
 
                     tvCaption.show(info.caption)
                     tvShows.show(info.shows)

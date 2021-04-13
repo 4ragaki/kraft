@@ -9,7 +9,7 @@ import `fun`.aragaki.kraft.extensions.startActivity
 import `fun`.aragaki.kraft.ui.post.PostActivity
 import android.net.Uri
 import coil.ImageLoader
-import coil.api.load
+import coil.load
 
 class PostHolder(binding: ItemPostBinding) : BaseHolder<ItemPostBinding>(binding) {
     private lateinit var _post: Post

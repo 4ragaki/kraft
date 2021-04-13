@@ -68,8 +68,8 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21")
-    testImplementation("junit:junit:4.13.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.31")
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
@@ -81,15 +81,15 @@ dependencies {
 
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
-    implementation("androidx.activity:activity-ktx:1.3.0-alpha05")
+    implementation("androidx.activity:activity-ktx:1.3.0-alpha06")
     implementation("androidx.fragment:fragment-ktx:1.3.2")
 
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.4")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
 
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
-    implementation("androidx.work:work-runtime-ktx:2.6.0-alpha01")
+    implementation("androidx.work:work-runtime-ktx:2.7.0-alpha02")
     implementation("androidx.preference:preference-ktx:1.1.1")
     implementation("androidx.paging:paging-runtime-ktx:3.0.0-beta03")
 
@@ -104,8 +104,8 @@ dependencies {
     implementation("org.kodein.di:kodein-di-framework-android-x:7.1.0")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("com.tickaroo.tikxml:annotation:0.9.3-SNAPSHOT")
@@ -116,10 +116,10 @@ dependencies {
     implementation("me.imid.swipebacklayout.lib:library:1.3.0")
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
-    implementation("io.coil-kt:coil:0.11.0")
-    implementation("io.coil-kt:coil-gif:0.11.0")
-    implementation("io.coil-kt:coil-svg:0.11.0")
+    implementation("io.coil-kt:coil:1.1.1")
+    implementation("io.coil-kt:coil-gif:1.1.1")
+    implementation("io.coil-kt:coil-svg:1.1.1")
 
-    implementation("com.airbnb.android:lottie:3.6.0")
+    implementation("com.airbnb.android:lottie:3.6.1")
     implementation("androidx.webkit:webkit:1.4.0")
 }

@@ -1,14 +1,16 @@
 package `fun`.aragaki.kraft.data.services
 
+import `fun`.aragaki.kraft.data.entities.PixivErrorResponse
 import `fun`.aragaki.kraft.data.entities.PixivIllustrationResponse
 import `fun`.aragaki.kraft.data.entities.PixivRankResponse
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
-import retrofit2.http.Query
+import retrofit2.http.*
+import retrofit2.http.POST
+
+import retrofit2.http.FormUrlEncoded
 
 
 interface PixivService {
@@ -33,7 +35,42 @@ interface PixivService {
         @Query("illust_id") illust_id: Long,
     ): PixivIllustrationResponse
 
+    @FormUrlEncoded
+    @POST("v1/user/follow/add")
+    suspend fun follow(
+        @Header("Authorization") token: String?,
+        @Field("user_id") user_id: Long,
+        @Field("restrict") followType: String = Restrict.PUBLIC.value
+    ): PixivErrorResponse
+
+    @FormUrlEncoded
+    @POST("v1/user/follow/delete")
+    suspend fun unfollow(
+        @Header("Authorization") token: String?,
+        @Field("user_id") user_id: Long
+    ): PixivErrorResponse
+
+    @FormUrlEncoded
+    @POST("v2/illust/bookmark/add")
+    suspend fun bookmarkAdd(
+        @Header("Authorization") token: String,
+        @Field("illust_id") illust_id: Long,
+        @Field("restrict") restrict: String = Restrict.PUBLIC.value
+    ): PixivErrorResponse
+
+    @FormUrlEncoded
+    @POST("v1/illust/bookmark/delete")
+    suspend fun bookmarkDelete(
+        @Header("Authorization") token: String,
+        @Field("illust_id") illust_id: Long
+    ): PixivErrorResponse
+
+
     companion object {
+        enum class Restrict(val value: String) {
+            PUBLIC("public"), PRIVATE("private")
+        }
+
         operator fun invoke(
             client: OkHttpClient, converter: GsonConverterFactory,
             baseUrl: String

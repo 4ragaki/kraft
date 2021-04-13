@@ -29,16 +29,10 @@ fun DanbooruPost.extPreview() = Post.Preview(
 
 
 fun DanbooruPost.extInfo() = Post.Info(
-    uploader_id,
-    { uploader_name },
-    { null },
-    null,
-    pTitle,
-    Triple(true, null, null),
-    true to null,
-    false to fav_count.toString(),
-    false to score.toString(),
-    false to rating,
+    uploader_id, { uploader_name }, { null }, is_favorited,
+    null, pTitle, Triple(true, null, null),
+    true to null, false to fav_count.toString(),
+    false to score.toString(), false to rating,
     { c ->
         buildString {
             image_height?.let { h ->

@@ -5,7 +5,7 @@ import `fun`.aragaki.kraft.databinding.ItemWorkBinding
 import `fun`.aragaki.kraft.worker.DownloadOutput
 import android.net.Uri
 import androidx.work.WorkInfo
-import coil.api.load
+import coil.load
 
 class WorkHolder(binding: ItemWorkBinding) : BaseHolder<ItemWorkBinding>(binding) {
 

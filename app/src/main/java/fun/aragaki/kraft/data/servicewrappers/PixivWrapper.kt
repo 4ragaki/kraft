@@ -3,9 +3,6 @@ package `fun`.aragaki.kraft.data.servicewrappers
 import `fun`.aragaki.kraft.data.CredentialException
 import `fun`.aragaki.kraft.data.entities.PixivRankResponse
 import `fun`.aragaki.kraft.data.entities.PixivTokenResponse
-import `fun`.aragaki.kraft.data.features.PixivSearch
-import `fun`.aragaki.kraft.data.features.PixivToken
-import `fun`.aragaki.kraft.data.features.Tags
 import `fun`.aragaki.kraft.data.services.PixivAuth
 import `fun`.aragaki.kraft.data.services.PixivService
 import `fun`.aragaki.kraft.extensions.toBearer
@@ -16,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PixivWrapper(
     override val booru: Boorus.Pixiv, client: OkHttpClient,
     converter: GsonConverterFactory, override val dependencyTag: String?
-) : BooruWrapper, PixivToken, PixivSearch, Tags {
+) : BooruWrapper, BooruWrapper.Taggable, BooruWrapper.Votable, BooruWrapper.Followable {
     private val auth = PixivAuth(client, converter, "${booru.authScheme}://${booru.authHost}")
     override val service = PixivService(client, converter, "${booru.scheme}://${booru.host}")
 
@@ -38,17 +35,33 @@ class PixivWrapper(
     override suspend fun tags(tags: String?, page: Int) =
         service.search(getAccessToken(), tags, 0).illusts.map { it.attachContext(this) }
 
-    override suspend fun pixivSearch(word: String, offset: Long): PixivRankResponse {
+    suspend fun pixivSearch(word: String, offset: Long): PixivRankResponse {
         return coroutineRetry {
             service.search(getAccessToken().toBearer(), word, offset)
         }
     }
 
-    override suspend fun pixivToken(verifier: String, code: String): PixivTokenResponse {
+    override suspend fun vote(positive: Boolean, postId: Long) = if (positive) {
+        service.bookmarkAdd(getAccessToken(), postId)
+        true
+    } else {
+        service.bookmarkDelete(getAccessToken(), postId)
+        false
+    }
+
+    override suspend fun follow(positive: Boolean, userId: Long) = if (positive) {
+        service.follow(getAccessToken(), userId)
+        true
+    } else {
+        service.unfollow(getAccessToken(), userId)
+        false
+    }
+
+    suspend fun pixivToken(verifier: String, code: String): PixivTokenResponse {
         return auth.login(verifier, code)
     }
 
-    override suspend fun pixivTokenRefresh(refresh_token: String): PixivTokenResponse {
+    private suspend fun pixivTokenRefresh(refresh_token: String): PixivTokenResponse {
         return auth.refresh(refresh_token)
     }
 
